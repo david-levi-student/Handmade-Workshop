@@ -133,13 +133,9 @@ void Text::SetRootFolder(const std::string& rootFolder)
 }
 //================================================================================================
 Text::Text(const std::string& tag, const std::string& filename, GLuint fontSize) 
-	: m_buffer("Text_" + std::to_string(++s_totalObjects), 6, true)
+	: m_fontSize(fontSize)
 {
-	m_totalWidth = 0;
 	m_buffer.LinkEBO();
-	m_fontSize = fontSize;
-	m_isFirstLetterCentered = false;
-	m_color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
 
 	if (!filename.empty())
 	{

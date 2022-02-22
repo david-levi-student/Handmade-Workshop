@@ -1,7 +1,7 @@
 #pragma once
 
 /*===================================================================#
-| 'Text' source files last updated on 25 October 2021                |
+| 'Text' source files last updated on 22 February 2022                |
 #====================================================================#
 | Class has gone through initial tests. No known issues found.       |
 #===================================================================*/
@@ -65,15 +65,15 @@ private:
 	//Would love to call it 'Font' but that name is reserved
 	typedef std::map<GLchar, Glyph> FontType;
 
-	Buffer m_buffer;
 	FontType m_font;
+	Buffer m_buffer{ "Text_" + std::to_string(++s_totalObjects), 6, true };
 
-	glm::vec4 m_color;
 	GLuint m_fontSize;
-	GLuint m_totalWidth;
+	GLuint m_totalWidth{ 0 };
+	glm::vec4 m_color{ 1.0f, 1.0f, 1.0f, 1.0f };
 
 	std::string m_string;
-	bool m_isFirstLetterCentered;
+	bool m_isFirstLetterCentered{ false };
 
 	static GLuint s_totalObjects;
 	static std::string s_rootFolder;
