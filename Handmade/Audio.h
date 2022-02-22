@@ -1,7 +1,7 @@
 #pragma once
 
 /*===================================================================#
-| 'Audio' source files last updated on 25 October 2021               |
+| 'Audio' source files last updated on 22 February 2022              |
 #====================================================================#
 | Class has not been fully tested. No known issues found.            |
 #===================================================================*/
@@ -91,20 +91,20 @@ public:
 
 private:
 
-	float m_pan;
-	float m_volume;
-	float m_frequency;
-	float m_minFrequency;
-	float m_maxFrequency;
-
 	Type m_type;
 	bool m_isMuted;
 	Loop m_loopCount;
 	std::string m_tag;
 
-	FMOD::Sound* m_audioData;
-	FMOD::Channel* m_channel;
-	FMOD::ChannelGroup* m_channelGroup;
+	float m_pan = 0.0f;
+	float m_volume = 0.5f;
+	float m_frequency = 44100.0f;
+	float m_minFrequency = 11025.0f;
+	float m_maxFrequency = 176400.0f;
+
+	FMOD::Sound* m_audioData = nullptr;
+	FMOD::Channel* m_channel = nullptr;
+	FMOD::ChannelGroup* m_channelGroup = nullptr;
 
 	static std::string s_rootFolder;
 	static FMOD::System* s_audioSystem;

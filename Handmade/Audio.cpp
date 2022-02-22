@@ -123,19 +123,9 @@ void Audio::SetRootFolder(const std::string& rootFolder)
 //======================================================================================================
 Audio::Audio(Type type, const std::string& tag, const std::string& filename)
 {
-	m_pan = 0.0f;
-	m_volume = 0.5f;
-	m_frequency = 44100.0f;
-	m_minFrequency = 11025.0f;
-	m_maxFrequency = 176400.0f;
-
 	m_type = type;
 	m_isMuted = false;
 	m_loopCount = Loop::None;
-
-	m_channel = nullptr;
-	m_audioData = nullptr;
-	m_channelGroup = nullptr;
 
 	if (!filename.empty())
 	{
