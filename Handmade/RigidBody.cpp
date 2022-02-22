@@ -15,21 +15,7 @@ glm::vec3 RigidBody::TorqueForce(const glm::vec3& force,
 	return glm::cross(force, (centreOfMass - contactPosition));
 }
 //======================================================================================================
-RigidBody::RigidBody()
-{
-	m_mass = 0.0;
-	m_angle = 0.0;
-	m_angularMass = 0.0;
-	m_angularVelocity = 0.0;
-	m_angularAcceleration = 0.0;
-
-	m_force = glm::vec3(0.0f);
-	m_torque = glm::vec3(0.0f);
-	m_position = glm::vec3(0.0f);
-	m_velocity = glm::vec3(0.0f);
-	m_acceleration = glm::vec3(0.0f);
-	m_orientation = glm::quat(1.0f, 0.0f, 0.0f, 0.0f);
-}
+RigidBody::RigidBody() {}
 //======================================================================================================
 GLdouble RigidBody::GetAngle() const
 {

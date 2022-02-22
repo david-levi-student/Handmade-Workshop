@@ -1,7 +1,7 @@
 #pragma once
 
 /*===================================================================#
-| 'SphereCollider' source files last updated on 23 November 2021     |
+| 'SphereCollider' source files last updated on 22 February 2022     |
 #====================================================================#
 | Class has not been fully tested. No known issues found.            |
 #===================================================================*/
@@ -40,11 +40,10 @@ public:
 
 private:
 
-	GLfloat m_scale;
-	GLfloat m_radius;
-	GLfloat m_radiusScaled;
-
-	glm::vec4 m_color;
-	glm::vec3 m_position;
+	GLfloat m_scale{ 1.0f };
+	GLfloat m_radius{ 1.0f };
+	GLfloat m_radiusScaled{ 1.0f };
+	glm::vec3 m_position{ 0.0f };
+	glm::vec4 m_color{ 0.0f, 1.0f, 0.0f, 0.4f };
 
 };

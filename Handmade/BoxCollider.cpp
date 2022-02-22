@@ -4,16 +4,7 @@
 #include "SphereCollider.h"
 
 //======================================================================================================
-BoxCollider::BoxCollider()
-{
-	m_min = glm::vec3(0.0f);
-	m_max = glm::vec3(0.0f);
-	m_scale = glm::vec3(1.0f);
-	m_position = glm::vec3(0.0f);
-	m_dimension = glm::vec3(1.0f);
-	m_halfDimension = glm::vec3(0.5f);
-	m_color = glm::vec4(1.0f, 0.0f, 0.0f, 0.4f);
-}
+BoxCollider::BoxCollider() {}
 //======================================================================================================
 const glm::vec3& BoxCollider::GetScale() const
 {

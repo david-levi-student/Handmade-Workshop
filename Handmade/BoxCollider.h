@@ -1,7 +1,7 @@
 #pragma once
 
 /*===================================================================#
-| 'BoxCollider' source files last updated on 1 December 2021         |
+| 'BoxCollider' source files last updated on 22 February 2022        |
 #====================================================================#
 | Class has not been fully tested. No known issues found.            |
 #===================================================================*/
@@ -49,12 +49,12 @@ public:
 
 private:
 
-	glm::vec3 m_min;
-	glm::vec3 m_max;
-	glm::vec4 m_color;
-	glm::vec3 m_scale;
-	glm::vec3 m_position;
-	glm::vec3 m_dimension;
-	glm::vec3 m_halfDimension;
+	glm::vec3 m_min{ 0.0f };
+	glm::vec3 m_max{ 0.0f };
+	glm::vec3 m_scale{ 1.0f };
+	glm::vec3 m_position{ 0.0f };
+	glm::vec3 m_dimension{ 1.0f };
+	glm::vec3 m_halfDimension{ 0.0f };
+	glm::vec4 m_color{ 1.0f, 0.0f, 0.0f, 0.4f };
 
 };

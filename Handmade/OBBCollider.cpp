@@ -2,24 +2,7 @@
 #include "OBBCollider.h"
 
 //======================================================================================================
-OBBCollider::OBBCollider()
-{
-	m_scale = glm::vec3(1.0f);
-	m_position = glm::vec3(0.0f);
-	m_dimension = glm::vec3(1.0f);
-	m_halfDimension = glm::vec3(0.5f);
-	m_color = glm::vec4(1.0f, 0.5f, 0.0f, 0.4f);
-	m_rotation = glm::quat(1.0f, 0.0f, 0.0f, 0.0f);
-
-	m_upAxis = glm::vec3(0.0f, 1.0f, 0.0f);
-	m_rightAxis = glm::vec3(1.0f, 0.0f, 0.0f);
-	m_forwardAxis = glm::vec3(0.0f, 0.0f, -1.0f);
-
-	for (auto& corner : m_corners)
-	{
-		corner = glm::vec3(0.0f);
-	}
-}
+OBBCollider::OBBCollider() {}
 //======================================================================================================
 const glm::vec3& OBBCollider::GetScale() const
 {

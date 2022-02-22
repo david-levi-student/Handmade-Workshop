@@ -1,7 +1,7 @@
 #pragma once
 
 /*===================================================================#
-| 'LineSegment' source files last updated on 23 November 2021        |
+| 'LineSegment' source files last updated on 22 November 2021        |
 #====================================================================#
 | Class has not been fully tested. No known issues found.            |
 #===================================================================*/
@@ -34,13 +34,13 @@ public:
 	glm::vec3 PointOnLine(GLfloat x, GLfloat y, GLfloat z) const;
 
 	void Update() {}
-	void Render() {}
+	void Render() { /*debug only*/ }
 
 private:
 
-	GLfloat m_scale;
-	glm::vec4 m_color;
-	glm::vec3 m_endPoint;
-	glm::vec3 m_startPoint;
+	GLfloat m_scale{ 1.0f };
+	glm::vec3 m_endPoint{ 0.0f };
+	glm::vec3 m_startPoint{ 0.0f };
+	glm::vec4 m_color{ 1.0f, 0.0f, 1.0f, 1.0f };
 
 };

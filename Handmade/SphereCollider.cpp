@@ -2,14 +2,7 @@
 #include "SphereCollider.h"
 
 //======================================================================================================
-SphereCollider::SphereCollider()
-{
-	m_scale = 1.0f;
-	m_radius = 1.0f;
-	m_radiusScaled = 1.0f;
-	m_position = glm::vec3(0.0f);
-	m_color = glm::vec4(0.0f, 1.0f, 0.0f, 0.4f);
-}
+SphereCollider::SphereCollider() {}
 //======================================================================================================
 float SphereCollider::GetScale() const
 {

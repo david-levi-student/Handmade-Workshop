@@ -1,7 +1,7 @@
 #pragma once
 
 /*===================================================================#
-| 'Capsule' source files last updated on 23 November 2021            |
+| 'Capsule' source files last updated on 22 February 2022            |
 #====================================================================#
 | Class has not been fully tested. No known issues found.            |
 #===================================================================*/
@@ -24,6 +24,6 @@ public:
 private:
 
 	//LineSegment m_linesegment;
-	GLfloat m_radius;
+	GLfloat m_radius{ 0.0f };
 
 };

@@ -4,13 +4,7 @@
 #include "SphereCollider.h"
 
 //======================================================================================================
-LineSegment::LineSegment()
-{
-	m_scale = 1.0f;
-	m_endPoint = glm::vec3(0.0f);
-	m_startPoint = glm::vec3(0.0f);
-	m_color = glm::vec4(1.0f, 0.0f, 1.0f, 1.0f);
-}
+LineSegment::LineSegment() {}
 //======================================================================================================
 void LineSegment::SetScale(GLfloat scale)
 {

@@ -1,7 +1,7 @@
 #pragma once
 
 /*===================================================================#
-| 'RigidBody' source files last updated on 23 November 2021          |
+| 'RigidBody' source files last updated on 22 February 2022          |
 #====================================================================#
 | Class has not been fully tested. No known issues found.            |
 #===================================================================*/
@@ -49,18 +49,18 @@ public:
 
 private:
 
-	GLdouble m_mass;
-	GLdouble m_angle;
-	GLdouble m_angularMass;
-	GLdouble m_angularVelocity;
-	GLdouble m_angularAcceleration;
+	GLdouble m_mass{ 0.0 };
+	GLdouble m_angle{ 0.0 };
+	GLdouble m_angularMass{ 0.0 };
+	GLdouble m_angularVelocity{ 0.0 };
+	GLdouble m_angularAcceleration{ 0.0 };
 
-	glm::vec3 m_force;
-	glm::vec3 m_torque;
-	glm::vec3 m_position;
-	glm::vec3 m_velocity;
-	glm::quat m_orientation;
-	glm::vec3 m_acceleration;
+	glm::vec3 m_force{ 0.0f };
+	glm::vec3 m_torque{ 0.0f };
+	glm::vec3 m_position{ 0.0f };
+	glm::vec3 m_velocity{ 0.0f };
+	glm::vec3 m_acceleration{ 0.0f };
+	glm::quat m_orientation{ 1.0f, 0.0f, 0.0f, 0.0f };
 
 	//TODO - Fix this later
 	//glm::vec3 m_angularVelocity;

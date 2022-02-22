@@ -1,7 +1,7 @@
 #pragma once
 
 /*===================================================================#
-| 'Plane' source files last updated on 23 November 2021              |
+| 'Plane' source files last updated on 22 February 2022              |
 #====================================================================#
 | Class has not been fully tested. No known issues found.            |
 #===================================================================*/
@@ -13,10 +13,10 @@
 
 struct PlanePoints
 {
-	glm::vec3 point1 = glm::vec3(0.0f);
-	glm::vec3 point2 = glm::vec3(0.0f);
-	glm::vec3 point3 = glm::vec3(0.0f);
-	glm::vec3 point4 = glm::vec3(0.0f);
+	glm::vec3 point1{ 0.0f };
+	glm::vec3 point2{ 0.0f };
+	glm::vec3 point3{ 0.0f };
+	glm::vec3 point4{ 0.0f };
 };
 
 class Plane
@@ -62,10 +62,11 @@ public:
 
 private:
 
-	glm::vec4 m_color;
-	glm::vec3 m_normal;
-	glm::vec3 m_position;
 	PlanePoints m_planePoints;
-	GLfloat m_distanceFromOrigin;
+	GLfloat m_distanceFromOrigin{ 0.0f };
+	
+	glm::vec3 m_normal{ 0.0f };
+	glm::vec3 m_position{ 0.0f };
+	glm::vec4 m_color{ 0.0f, 0.0f, 1.0f, 1.0f };
 
 };
