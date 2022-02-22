@@ -1,3 +1,4 @@
+#include <algorithm>
 #include "Grid.h"
 #include "Input.h"
 #include "Shader.h"

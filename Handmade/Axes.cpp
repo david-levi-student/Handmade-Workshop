@@ -1,3 +1,4 @@
+#include <algorithm>
 #include "Axes.h"
 #include "Input.h"
 #include "Shader.h"
