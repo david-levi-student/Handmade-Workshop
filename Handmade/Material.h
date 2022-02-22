@@ -1,7 +1,7 @@
 #pragma once
 
 /*===================================================================#
-| 'Material' source files last updated on 23 November 2021           |
+| 'Material' source files last updated on 22 February 2021           |
 #====================================================================#
 | Class has not been fully tested. No known issues found.            |
 #===================================================================*/
@@ -66,24 +66,24 @@ public:
 
 private:
 
-	bool m_isTextured;
 	std::string m_tag;
 	std::string m_name;
+	bool m_isTextured = false;
 	std::vector<Material> m_group;
-
-	GLfloat m_shininess;
-	GLfloat m_refractiveIndex;
 
 	Texture m_normalMap;
 	Texture m_ambientMap;
 	Texture m_diffuseMap;
 	Texture m_specularMap;
 
-	glm::vec3 m_ambient;
-	glm::vec3 m_diffuse;
-	glm::vec3 m_specular;
-	glm::vec3 m_emission;
-	glm::vec3 m_transmittance;
+	GLfloat m_shininess{ 1.0f };
+	GLfloat m_refractiveIndex{ 0.0f };
+
+	glm::vec3 m_ambient{ 0.0f };
+	glm::vec3 m_diffuse{ 0.0f };
+	glm::vec3 m_specular{ 0.0f };
+	glm::vec3 m_emission{ 0.0f };
+	glm::vec3 m_transmittance{ 1.0f };
 
 	static std::string s_rootFolder;
 	static std::map<std::string, std::vector<Material>> s_materialGroups;

@@ -41,7 +41,7 @@ void Buffer::Destroy(const std::string& tag)
 			glDeleteBuffers(1, &it->second.m_EBO);
 		}
 
-		glDeleteBuffers(4, it->second.m_VBOs);
+		glDeleteBuffers(4, it->second.m_VBOs.data());
 		glDeleteVertexArrays(1, &it->second.m_VAO);
 
 		s_buffers.erase(it);
@@ -56,7 +56,7 @@ void Buffer::Destroy(const std::string& tag)
 				glDeleteBuffers(1, &buffer.second.m_EBO);
 			}
 
-			glDeleteBuffers(4, buffer.second.m_VBOs);
+			glDeleteBuffers(4, buffer.second.m_VBOs.data());
 			glDeleteVertexArrays(1, &buffer.second.m_VAO);
 		}
 
@@ -69,14 +69,9 @@ void Buffer::SetRenderStyle(RenderStyle renderStyle)
 	glPolygonMode(GL_FRONT_AND_BACK, renderStyle == RenderStyle::Polygonal ? GL_LINE : GL_FILL);
 }
 //======================================================================================================
-Buffer::Buffer(const std::string& tag, GLsizei totalVertices, bool hasEBO)
+Buffer::Buffer(const std::string& tag, GLsizei totalVertices, bool hasEBO) 
+	: m_hasEBO(hasEBO), m_tag(tag), m_totalVertices(totalVertices)
 {
-	m_VAO = 0;
-	m_EBO = 0;
-	m_tag = tag;
-	m_hasEBO = hasEBO;
-	m_totalVertices = totalVertices;
-
 	for (auto& ID : m_VBOs)
 	{
 		ID = 0;
@@ -87,7 +82,7 @@ Buffer::Buffer(const std::string& tag, GLsizei totalVertices, bool hasEBO)
 		assert(s_buffers.find(tag) == s_buffers.end());
 
 		glGenVertexArrays(1, &m_VAO);
-		glGenBuffers(4, m_VBOs);
+		glGenBuffers(4, m_VBOs.data());
 
 		if (hasEBO)
 		{

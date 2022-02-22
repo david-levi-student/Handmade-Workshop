@@ -83,8 +83,6 @@ void Texture::SetRootFolder(const std::string& rootFolder)
 //======================================================================================================
 Texture::Texture(const std::string& tag, const std::string& filename)
 {
-	m_ID = 0;
-
 	if (!filename.empty())
 	{
 		Load(tag, filename);

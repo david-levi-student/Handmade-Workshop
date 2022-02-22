@@ -1,7 +1,7 @@
 #pragma once
 
 /*===================================================================#
-| 'Texture' source files last updated on 23 November 2021            |
+| 'Texture' source files last updated on 22 February 2021            |
 #====================================================================#
 | Class has not been fully tested. No known issues found.            |
 #===================================================================*/
@@ -66,7 +66,7 @@ public:
 
 private:
 
-	GLuint m_ID;
+	GLuint m_ID = 0;
 	std::string m_tag;
 
 	static std::string s_rootFolder;

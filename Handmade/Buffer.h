@@ -1,11 +1,12 @@
 #pragma once
 
 /*===================================================================#
-| 'Buffer' source files last updated on 23 November 2021             |
+| 'Buffer' source files last updated on 22 February 2021             |
 #====================================================================#
 | Class has not been fully tested. No known issues found.            |
 #===================================================================*/
 
+#include <array>
 #include <map>
 #include <string>
 #include "GLAD/gl.h"
@@ -101,10 +102,11 @@ public:
 
 private:
 
-	GLuint m_VAO;
-	GLuint m_EBO;
+	GLuint m_VAO = 0;
+	GLuint m_EBO = 0;
+	std::array<GLuint, 4> m_VBOs = { 0, 0, 0, 0 };
+
 	bool m_hasEBO;
-	GLuint m_VBOs[4];
 	std::string m_tag;
 	GLsizei m_totalVertices;
 

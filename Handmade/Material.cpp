@@ -185,15 +185,6 @@ void Material::SetRootFolder(const std::string& rootFolder)
 //======================================================================================================
 Material::Material(const std::string& tag, const std::string& filename)
 {
-	m_isTextured = false;
-	m_shininess = 1.0f;
-	m_refractiveIndex = 0.0f;
-	m_ambient = glm::vec3(0.0f);
-	m_diffuse = glm::vec3(0.0f);
-	m_specular = glm::vec3(0.0f);
-	m_emission = glm::vec3(0.0f);
-	m_transmittance = glm::vec3(1.0f);
-
 	if (!filename.empty())
 	{
 		Load(tag, filename);

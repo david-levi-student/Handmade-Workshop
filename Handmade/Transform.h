@@ -1,7 +1,7 @@
 #pragma once
 
 /*===================================================================#
-| 'Transform' source files last updated on 23 November 2021          |
+| 'Transform' source files last updated on 22 February 2021          |
 #====================================================================#
 | Class has not been fully tested. No known issues found.            |
 #===================================================================*/
@@ -59,11 +59,11 @@ public:
 
 private:
 
-	bool m_isDirty;
+	bool m_isDirty = false;
 
-	glm::vec3 m_position;
-	glm::quat m_rotation;
-	glm::vec3 m_scale;
 	glm::mat4 m_matrix;
+	glm::vec3 m_scale{ 1.0f };
+	glm::vec3 m_position{ 0.0f };
+	glm::quat m_rotation{ 1.0f, 0.0f, 0.0f, 0.0f };
 
 };
