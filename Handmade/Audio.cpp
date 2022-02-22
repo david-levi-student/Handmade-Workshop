@@ -121,9 +121,8 @@ void Audio::SetRootFolder(const std::string& rootFolder)
 	s_rootFolder = rootFolder;
 }
 //======================================================================================================
-Audio::Audio(Type type, const std::string& tag, const std::string& filename)
+Audio::Audio(Type type, const std::string& tag, const std::string& filename) : m_type(type)
 {
-	m_type = type;
 	m_isMuted = false;
 	m_loopCount = Loop::None;
 
