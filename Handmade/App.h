@@ -1,7 +1,9 @@
 #pragma once
 
 /*===================================================================#
-| 'App' source files last updated on 9 November 2021                 |
+| 'App' source files last updated on 22 February 2022                |
+#====================================================================#
+| Class has not been fully tested. No known issues found.            |
 #===================================================================*/
 
 //This class implements RAII which means the ctor and dtor manage the 
@@ -26,7 +28,7 @@ private:
 	bool CreateObjects();
 	void Shutdown();
 
-	int m_deltaTime;
+	int m_deltaTime = 0;
 	std::unique_ptr<State> m_appState;
 
 };

@@ -65,9 +65,8 @@ private:
 	Screen(const Screen&);
 	Screen& operator=(Screen&);
 
-	glm::ivec2 m_resolution;
-
-	SDL_Window* m_window;
-	SDL_GLContext m_context;
+	glm::ivec2 m_resolution{ 0 };
+	SDL_Window* m_window{ nullptr };
+	SDL_GLContext m_context{ nullptr };
 
 };

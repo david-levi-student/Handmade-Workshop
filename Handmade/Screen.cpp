@@ -14,12 +14,7 @@ Screen* Screen::Instance()
 	return screenObject;
 }
 //======================================================================================================
-Screen::Screen()
-{
-	m_window = nullptr;
-	m_context = nullptr;
-	m_resolution = glm::ivec2(0);
-}
+Screen::Screen() {}
 //======================================================================================================
 bool Screen::Initialize(const std::string& filename)
 {

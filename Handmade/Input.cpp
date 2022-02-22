@@ -8,26 +8,7 @@ Input* Input::Instance()
 	return inputObject;
 }
 //======================================================================================================
-Input::Input()
-{
-	m_keyUp = 0;
-	m_keyDown = 0;
-
-	m_cursor = nullptr;
-	m_keyStates = nullptr;
-
-	m_isXClicked = false;
-	m_isKeyPressed = false;
-	m_isWindowResized = false;
-
-	m_mouseWheel = glm::ivec2(0);
-	m_mouseMotion = glm::ivec2(0);
-	m_mousePosition = glm::ivec2(0);
-
-	m_isLeftButtonClicked = false;
-	m_isRightButtonClicked = false;
-	m_isMiddleButtonClicked = false;
-}
+Input::Input() {}
 //======================================================================================================
 bool Input::IsXClicked() const
 {

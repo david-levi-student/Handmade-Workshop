@@ -7,10 +7,7 @@ GLint Shader::s_vertexShaderID = 0;
 GLint Shader::s_fragmentShaderID = 0;
 
 //======================================================================================================
-Shader::Shader()
-{
-	m_shaderProgramID = 0;
-}
+Shader::Shader() {}
 //======================================================================================================
 //TODO - Consider moving these as they could cause a crash!
 Shader::~Shader()

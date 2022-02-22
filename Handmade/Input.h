@@ -1,7 +1,9 @@
 #pragma once
 
 /*===================================================================#
-| 'Input' source files last updated on 21 July 2021                  |
+| 'Input' source files last updated on 22 February 2022              |
+#====================================================================#
+| Class has not been fully tested. No known issues found.            |
 #===================================================================*/
 
 #include <SDL.h>
@@ -69,22 +71,22 @@ private:
 	Input(const Input&);
 	Input& operator=(const Input&);
 
-	char m_keyUp;
-	char m_keyDown;
+	char m_keyUp{ 0 };
+	char m_keyDown{ 0 };
 
-	bool m_isXClicked;
-	bool m_isKeyPressed;
-	bool m_isWindowResized;
+	bool m_isXClicked{ false };
+	bool m_isKeyPressed{ false };
+	bool m_isWindowResized{ false };
 
-	KeyState m_keyStates;
-	SDL_Cursor* m_cursor;
+	KeyState m_keyStates{ nullptr };
+	SDL_Cursor* m_cursor{ nullptr };
 
-	glm::ivec2 m_mouseWheel;
-	glm::ivec2 m_mouseMotion;
-	glm::ivec2 m_mousePosition;
+	glm::ivec2 m_mouseWheel{ 0 };
+	glm::ivec2 m_mouseMotion{ 0 };
+	glm::ivec2 m_mousePosition{ 0 };
 
-	bool m_isLeftButtonClicked;
-	bool m_isRightButtonClicked;
-	bool m_isMiddleButtonClicked;
+	bool m_isLeftButtonClicked{ false };
+	bool m_isRightButtonClicked{ false };
+	bool m_isMiddleButtonClicked{ false };
 
 };

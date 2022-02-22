@@ -3,12 +3,9 @@
 #include "Input.h"
 #include "Screen.h"
 
-//TODO test
-
 //======================================================================================================
 App::App(State* initialState)
 {
-	m_deltaTime = 0;
 	m_appState.reset(initialState);
 
 	if (Initialize())

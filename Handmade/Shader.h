@@ -1,7 +1,7 @@
 #pragma once
 
 /*===================================================================#
-| 'Shader' source files last updated on 23 November 2021             |
+| 'Shader' source files last updated on 22 February 2022             |
 #====================================================================#
 | Class has not been fully tested. No known issues found.            |
 #===================================================================*/
@@ -52,7 +52,7 @@ private:
 	static GLint s_vertexShaderID;
 	static GLint s_fragmentShaderID;
 
-	GLuint m_shaderProgramID;
+	GLuint m_shaderProgramID = 0;
 	std::map<std::string, GLuint> m_uniforms;
 	std::map<std::string, GLuint> m_attributes;
 
