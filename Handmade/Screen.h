@@ -1,7 +1,7 @@
 #pragma once
 
 /*===================================================================#
-| 'Screen' source files last updated on 23 November 2021             |
+| 'Screen' source files last updated on 22 February 2022             |
 #====================================================================#
 | Class has not been fully tested. No known issues found.            |
 #===================================================================*/
@@ -11,8 +11,6 @@
 #include "GLAD/gl.h"
 #include <glm.hpp>
 #include <SDL.h>
-
-#define NOMINMAX
 
 //This code usually resides in the stdafx.h file and  
 //sets the manifest so that the modern Windows controls  

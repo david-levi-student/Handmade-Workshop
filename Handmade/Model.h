@@ -13,8 +13,6 @@
 #include "Object.h"
 #include "Texture.h"
 
-#define NOMINMAX
-
 struct Mesh
 {
 	std::string name;
