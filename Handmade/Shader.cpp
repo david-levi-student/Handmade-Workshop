@@ -5,12 +5,35 @@
 
 GLint Shader::s_vertexShaderID = 0;
 GLint Shader::s_fragmentShaderID = 0;
+//======================================================================================================
+bool Shader::Initialize()
+{
+	s_vertexShaderID = glCreateShader(GL_VERTEX_SHADER);
 
+	if (s_vertexShaderID == 0)
+	{
+		Utility::Log(Utility::Destination::WindowsMessageBox,
+			"Error creating vertex shader object. Possible causes could be a "
+			"very old graphics card that does not support modern OpenGL.",
+			Utility::Severity::Failure);
+		return false;
+	}
+
+	s_fragmentShaderID = glCreateShader(GL_FRAGMENT_SHADER);
+
+	if (s_fragmentShaderID == 0)
+	{
+		Utility::Log(Utility::Destination::WindowsMessageBox,
+			"Error creating fragment shader object. Possible causes could be a "
+			"very old graphics card that does not support modern OpenGL.",
+			Utility::Severity::Failure);
+		return false;
+	}
+
+	return true;
+}
 //======================================================================================================
-Shader::Shader() {}
-//======================================================================================================
-//TODO - Consider moving these as they could cause a crash!
-Shader::~Shader()
+void Shader::Shutdown()
 {
 	glDeleteShader(s_vertexShaderID);
 	glDeleteShader(s_fragmentShaderID);
@@ -43,34 +66,6 @@ bool Shader::Create(const std::string& vertexShaderFilename, const std::string& 
 			"very old graphics card that does not support modern OpenGL.",
 			Utility::Severity::Failure);
 		return false;
-	}
-
-	if (s_vertexShaderID == 0)
-	{
-		s_vertexShaderID = glCreateShader(GL_VERTEX_SHADER);
-
-		if (s_vertexShaderID == 0)
-		{
-			Utility::Log(Utility::Destination::WindowsMessageBox,
-				"Error creating vertex shader object. Possible causes could be a "
-				"very old graphics card that does not support modern OpenGL.",
-				Utility::Severity::Failure);
-			return false;
-		}
-	}
-
-	if (s_fragmentShaderID == 0)
-	{
-		s_fragmentShaderID = glCreateShader(GL_FRAGMENT_SHADER);
-
-		if (s_fragmentShaderID == 0)
-		{
-			Utility::Log(Utility::Destination::WindowsMessageBox,
-				"Error creating fragment shader object. Possible causes could be a "
-				"very old graphics card that does not support modern OpenGL.",
-				Utility::Severity::Failure);
-			return false;
-		}
 	}
 
 	if (!CompileShaders(vertexShaderFilename))

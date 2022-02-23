@@ -2,6 +2,7 @@
 #include "App.h"
 #include "Input.h"
 #include "Screen.h"
+#include "Shader.h"
 
 //======================================================================================================
 App::App(State* initialState)
@@ -64,6 +65,11 @@ bool App::Initialize()
 		return false;
 	}
 
+	if (!Shader::Initialize())
+	{
+		return false;
+	}
+
 	return true;
 }
 //======================================================================================================
@@ -74,5 +80,6 @@ bool App::CreateObjects()
 //======================================================================================================
 void App::Shutdown()
 {
+	Shader::Shutdown();
 	Screen::Instance()->Shutdown();
 }

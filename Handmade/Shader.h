@@ -16,8 +16,11 @@ class Shader
 
 public:
 
-	Shader();
-	~Shader();
+	static bool Initialize();
+	static void Shutdown();
+
+	Shader() {}
+	~Shader() {}
 
 	GLuint GetUniformID(const std::string& uniform) const;
 	GLuint GetAttributeID(const std::string& attribute) const;
