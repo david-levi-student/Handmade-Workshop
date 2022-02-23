@@ -213,14 +213,26 @@ void Cuboid::Render(Shader& shader)
 	m_buffer.LinkVBO(shader.GetAttributeID("colorIn"),
 		Buffer::VBO::ColorBuffer, Buffer::ComponentSize::RGBA, Buffer::DataType::FloatData);
 	m_buffer.LinkVBO(shader.GetAttributeID("textureIn"),
-		Buffer::VBO::VertexBuffer, Buffer::ComponentSize::UV, Buffer::DataType::FloatData);
+		Buffer::VBO::TextureBuffer, Buffer::ComponentSize::UV, Buffer::DataType::FloatData);
 	//m_buffer.LinkVBO(shader.GetAttributeID("normalIn"),
 		//Buffer::VBO::ColorBuffer, Buffer::ComponentSize::XYZ, Buffer::DataType::FloatData);
 
 	m_normalMatrix = glm::inverse(glm::mat3(m_transform.GetMatrix()));
 
 	//shader.SendData("normal", m_normalMatrix);
-	shader.SendData("model", m_transform.GetMatrix());
+
+	//Quick fix to allow child objects without parent objects (this avoids a crash)
+	//TODO - What we require here is a proper parent/child linkage of objects
+	if (m_parent)
+	{
+		shader.SendData("model", m_parent->GetTransform().GetMatrix() * m_transform.GetMatrix());
+	}
+
+	else
+	{
+		shader.SendData("model", m_transform.GetMatrix());
+	}
+
 	shader.SendData("isTextured", static_cast<GLuint>(m_isTextured));
 
 	m_buffer.Render(Buffer::RenderMode::Triangles);
