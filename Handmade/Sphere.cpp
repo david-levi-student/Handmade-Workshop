@@ -118,6 +118,7 @@ void Sphere::SetColor(GLfloat r, GLfloat g, GLfloat b, GLfloat a)
 			offset += sizeof(colors);
 		}
 	}
+	m_color = glm::vec4(r, g, b, a);
 }
 //======================================================================================================
 void Sphere::Render(Shader& shader)

@@ -160,6 +160,7 @@ void Cuboid::SetColor(GLfloat r, GLfloat g, GLfloat b, GLfloat a)
 						 r, g, b, a, r, g, b, a };     //bottom face 
 
 	m_buffer.FillVBO(Buffer::VBO::ColorBuffer, colors, sizeof(colors), Buffer::Fill::Ongoing);
+	m_color = glm::vec4(r, g, b, a);
 }
 //======================================================================================================
 void Cuboid::SetDimension(const glm::vec3& dimension)

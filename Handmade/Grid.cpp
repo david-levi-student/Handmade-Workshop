@@ -47,6 +47,7 @@ void Grid::SetColor(GLfloat r, GLfloat g, GLfloat b, GLfloat a)
 		m_buffer.AppendVBO(Buffer::VBO::ColorBuffer, colors, sizeof(colors), offset);
 		offset += sizeof(colors);
 	}
+	m_color = glm::vec4(r, g, b, a);
 }
 //======================================================================================================
 void Grid::Render(Shader& shader)

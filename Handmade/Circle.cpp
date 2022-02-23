@@ -96,6 +96,7 @@ void Circle::SetColor(GLfloat r, GLfloat g, GLfloat b, GLfloat a)
 		m_buffer.AppendVBO(Buffer::VBO::ColorBuffer, colors, sizeof(colors), offset);
 		offset += sizeof(colors);
 	}
+	m_color = glm::vec4(r, g, b, a);
 }
 //======================================================================================================
 void Circle::Render(Shader& shader)

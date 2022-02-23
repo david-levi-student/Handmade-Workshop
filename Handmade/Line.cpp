@@ -35,6 +35,7 @@ void Line::SetColor(GLfloat r, GLfloat g, GLfloat b, GLfloat a)
 						 r, g, b, a };
 
 	m_buffer.FillVBO(Buffer::VBO::ColorBuffer, colors, sizeof(colors), Buffer::Fill::Ongoing);
+	m_color = glm::vec4(r, g, b, a);
 }
 //======================================================================================================
 void Line::Render(Shader& shader)

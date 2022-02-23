@@ -308,6 +308,7 @@ void Model::SetColor(GLfloat r, GLfloat g, GLfloat b, GLfloat a)
 		m_buffers[count++].FillVBO(Buffer::VBO::ColorBuffer, &mesh.colors[0].x,
 			mesh.colors.size() * sizeof(glm::vec4));
 	}
+	m_color = glm::vec4(r, g, b, a);
 }
 //======================================================================================================
 void Model::FillBuffers(Model& model)

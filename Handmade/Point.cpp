@@ -25,6 +25,7 @@ void Point::SetColor(GLfloat r, GLfloat g, GLfloat b, GLfloat a)
 {
 	glm::vec4 color = glm::vec4(r, g, b, a);
 	m_buffer.FillVBO(Buffer::VBO::ColorBuffer, &color.r, sizeof(color), Buffer::Fill::Ongoing);
+	m_color = glm::vec4(r, g, b, a);
 }
 //======================================================================================================
 void Point::Render(Shader& shader)
