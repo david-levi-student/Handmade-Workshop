@@ -3,9 +3,8 @@
 
 //======================================================================================================
 Quad::Quad(Object* parent, GLfloat width, GLfloat height, GLfloat r, GLfloat g, GLfloat b, GLfloat a)
-	: m_buffer("Quad", 6, true)
+	: Object(parent), m_buffer("Quad", 6, true)
 {
-	m_parent = parent;
 	m_color = glm::vec4(r, g, b, a);
 	m_dimension = glm::vec2(width, height);
 
@@ -36,7 +35,6 @@ Quad::Quad(Object* parent, GLfloat width, GLfloat height, GLfloat r, GLfloat g, 
 
 	//TODO - Find a way to only create one single 
 	//buffer to be shared amongst subsequent quads
-	//m_buffer.Create("Quad", 6, true);
 
 	m_buffer.LinkEBO();
 	m_buffer.FillVBO(Buffer::VBO::VertexBuffer, vertices, sizeof(vertices), Buffer::Fill::Ongoing);

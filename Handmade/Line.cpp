@@ -1,11 +1,9 @@
 #include "Line.h"
 
 //======================================================================================================
-Line::Line(GLfloat lineWidth, GLfloat r, GLfloat g, GLfloat b, GLfloat a) : m_buffer("Line", 2)
+Line::Line(GLfloat lineWidth, GLfloat r, GLfloat g, GLfloat b, GLfloat a) 
+	: m_buffer("Line", 2), m_lineWidth(lineWidth)
 {
-	m_lineWidth = lineWidth;
-	//m_buffer.Create("Line", 2);
-
 	GLfloat colors[] = { r, g, b, a, r, g, b, a };
 	GLfloat vertices[] = { 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f };
 

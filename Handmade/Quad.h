@@ -1,7 +1,7 @@
 #pragma once
 
 /*===================================================================#
-| 'Quad' source files last updated on 28 September 2021              |
+| 'Quad' source files last updated on 23 February 2022               |
 #====================================================================#
 | Class has not been fully tested. No known issues found.            |
 #===================================================================*/
@@ -20,7 +20,7 @@ public:
 
 	const glm::vec4& GetColor() const;
 	void SetTextureScale(GLfloat width, GLfloat height);
-	
+
 	void SetColor(const glm::vec4& color);
 	void SetColor(GLfloat r, GLfloat g, GLfloat b, GLfloat a = 1.0f);
 

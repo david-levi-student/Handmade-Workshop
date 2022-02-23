@@ -1,7 +1,7 @@
 #pragma once
 
 /*===================================================================#
-| 'Cuboid' source files last updated on 28 September 2021            |
+| 'Cuboid' source files last updated on 23 February 2022             |
 #====================================================================#
 | Class has not been fully tested. No known issues found.            |
 #===================================================================*/

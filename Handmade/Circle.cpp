@@ -1,29 +1,23 @@
 #include "Circle.h"
 
 //======================================================================================================
-Circle::Circle(GLfloat radius, GLuint slices, GLfloat r, GLfloat g, GLfloat b, GLfloat a) 
-	: m_buffer("Circle", slices + 1)
+Circle::Circle(GLfloat radius, GLuint slices, GLfloat r, GLfloat g, GLfloat b, GLfloat a)
+	: m_slices(slices), m_radius(radius), m_buffer("Circle", slices + 1)
 {
-	m_slices = slices;
-	m_radius = radius;
+	auto offsetVertex = 0U;
+	auto offsetColor = 0U;
 
-	GLuint offsetVertex = 0;
-	GLuint offsetColor = 0;
-
-	const int BYTES_PER_VERTEX = 3 * sizeof(GLfloat);
-	const int BYTES_PER_COLOR = 4 * sizeof(GLfloat);
+	const auto BYTES_PER_VERTEX = 3 * sizeof(GLfloat);
+	const auto BYTES_PER_COLOR = 4 * sizeof(GLfloat);
 
 	//We add enough bytes here to accomodate for all the slices
 	//An extra vertex is added to accomodate the middle point
-	const int TOTAL_BYTES_VERTEX_VBO = (m_slices + 1) * BYTES_PER_VERTEX;
-	const int TOTAL_BYTES_COLOR_VBO = (m_slices + 1) * BYTES_PER_COLOR;
+	const auto TOTAL_BYTES_VERTEX_VBO = (m_slices + 1) * BYTES_PER_VERTEX;
+	const auto TOTAL_BYTES_COLOR_VBO = (m_slices + 1) * BYTES_PER_COLOR;
 
-	//An extra vertex is added to accomodate the middle point
-	//m_buffer.Create("Circle", m_slices + 1);
-
-	m_buffer.FillVBO(Buffer::VBO::VertexBuffer, 
+	m_buffer.FillVBO(Buffer::VBO::VertexBuffer,
 		nullptr, TOTAL_BYTES_VERTEX_VBO, Buffer::Fill::Ongoing);
-	m_buffer.FillVBO(Buffer::VBO::ColorBuffer, 
+	m_buffer.FillVBO(Buffer::VBO::ColorBuffer,
 		nullptr, TOTAL_BYTES_COLOR_VBO, Buffer::Fill::Ongoing);
 
 	//The more slices, the more detailed the circle is drawn 
@@ -35,9 +29,9 @@ Circle::Circle(GLfloat radius, GLuint slices, GLfloat r, GLfloat g, GLfloat b, G
 	glm::vec3 startVertex = glm::vec3(0.0f);
 	glm::vec4 startColor = glm::vec4(1.0f);
 
-	m_buffer.AppendVBO(Buffer::VBO::VertexBuffer, 
+	m_buffer.AppendVBO(Buffer::VBO::VertexBuffer,
 		&startVertex.x, BYTES_PER_VERTEX, offsetVertex);
-	m_buffer.AppendVBO(Buffer::VBO::ColorBuffer, 
+	m_buffer.AppendVBO(Buffer::VBO::ColorBuffer,
 		&startColor.r, BYTES_PER_COLOR, offsetColor);
 
 	//Loop through the amount of slices passed and add an extra slice into 
@@ -106,10 +100,10 @@ void Circle::SetColor(GLfloat r, GLfloat g, GLfloat b, GLfloat a)
 void Circle::Render(Shader& shader)
 {
 	//TODO - Find a way to do this only once
-	m_buffer.LinkVBO(shader.GetAttributeID("vertexIn"), 
+	m_buffer.LinkVBO(shader.GetAttributeID("vertexIn"),
 		Buffer::VBO::VertexBuffer, Buffer::ComponentSize::XYZ, Buffer::DataType::FloatData);
-	m_buffer.LinkVBO(shader.GetAttributeID("colorIn"), 
+	m_buffer.LinkVBO(shader.GetAttributeID("colorIn"),
 		Buffer::VBO::ColorBuffer, Buffer::ComponentSize::RGBA, Buffer::DataType::FloatData);
-	
+
 	m_buffer.Render(Buffer::RenderMode::TriangleFan);
 }

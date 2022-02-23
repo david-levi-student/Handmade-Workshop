@@ -1,11 +1,9 @@
 #include "Point.h"
 
 //======================================================================================================
-Point::Point(GLfloat pointSize, GLfloat r, GLfloat g, GLfloat b, GLfloat a) : m_buffer("Point", 1)
+Point::Point(GLfloat pointSize, GLfloat r, GLfloat g, GLfloat b, GLfloat a)
+	: m_buffer("Point", 1), m_pointSize(pointSize)
 {
-	m_pointSize = pointSize;
-	//m_buffer.Create("Point", 1);	
-
 	glm::vec3 vertex = glm::vec3(0.0f);
 	glm::vec4 color = glm::vec4(r, g, b, a);
 
