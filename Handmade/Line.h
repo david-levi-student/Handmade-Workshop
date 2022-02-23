@@ -27,8 +27,8 @@ public:
 	void SetEndPoints(GLfloat x1, GLfloat y1, GLfloat z1,
 		GLfloat x2, GLfloat y2, GLfloat z2);
 
-	void SetColor(const glm::vec4& color);
-	void SetColor(GLfloat r, GLfloat g, GLfloat b, GLfloat a = 1.0f);
+	virtual void SetColor(const glm::vec4& color);
+	virtual void SetColor(GLfloat r, GLfloat g, GLfloat b, GLfloat a = 1.0f);
 
 	virtual void Render(Shader& shader);
 	virtual void Update(GLfloat deltaTime) {}

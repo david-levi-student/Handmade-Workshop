@@ -22,8 +22,8 @@ public:
 
 	void SetRadius(GLfloat radius);
 
-	void SetColor(const glm::vec4& color);
-	void SetColor(GLfloat r, GLfloat g, GLfloat b, GLfloat a = 1.0f);
+	virtual void SetColor(const glm::vec4& color);
+	virtual void SetColor(GLfloat r, GLfloat g, GLfloat b, GLfloat a = 1.0f);
 
 	virtual void Render(Shader& shader);
 	virtual void Update(GLfloat deltaTime) {}

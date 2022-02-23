@@ -41,6 +41,9 @@ public:
 	void SetPriority(GLuint priority);
 	void SetTag(const std::string& tag);
 
+	virtual void SetColor(const glm::vec4& color) {}
+	virtual void SetColor(GLfloat r, GLfloat g, GLfloat b, GLfloat a) {}
+
 	virtual void Render(Shader& shader) = 0;
 	virtual void Update(GLfloat deltaTime) = 0;
 	virtual void SendToShader(Shader& shader) = 0;

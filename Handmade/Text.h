@@ -41,10 +41,10 @@ public:
 	void SetString(const std::string& string);
 	void AppendString(const std::string& string);
 
-	void SetColor(const glm::vec4& color);
-	void SetColor(GLfloat r, GLfloat g, GLfloat b, GLfloat a = 1.0f);
-
 	void IsFirstLetterCentered(bool flag);
+	
+	virtual void SetColor(const glm::vec4& color);
+	virtual void SetColor(GLfloat r, GLfloat g, GLfloat b, GLfloat a = 1.0f);
 
 	virtual void Render(Shader& shader);
 	virtual void Update(GLfloat deltaTime) {}

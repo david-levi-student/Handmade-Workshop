@@ -80,8 +80,8 @@ public:
 
 	void SetModel(const std::string& tag);
 
-	void SetColor(const glm::vec4& color);
-	void SetColor(GLfloat r, GLfloat g, GLfloat b, GLfloat a);
+	virtual void SetColor(const glm::vec4& color);
+	virtual void SetColor(GLfloat r, GLfloat g, GLfloat b, GLfloat a);
 
 	virtual void Render(Shader& shader);
 	virtual void Update(GLfloat deltaTime) {}
