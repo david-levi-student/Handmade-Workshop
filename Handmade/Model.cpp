@@ -9,8 +9,8 @@ std::string Model::s_rootFolder = "Assets/Models/";
 std::map<std::string, Model> Model::s_models;
 //======================================================================================================
 bool Model::Load(const std::string& tag,
-	const std::string& filename, 
-	bool isNormalized, 
+	const std::string& filename,
+	bool isNormalized,
 	const std::string& defaultMaterial)
 {
 	assert(s_models.find(tag) == s_models.end());
@@ -264,8 +264,6 @@ Model::Model(const std::string& tag,
 	bool isNormalized,
 	const std::string& defaultMaterial)
 {
-	m_dimension = glm::vec3(0.0f);
-
 	if (!filename.empty())
 	{
 		Load(tag, filename, isNormalized, defaultMaterial);
@@ -457,7 +455,7 @@ void Model::Unload(const std::string& tag)
 	{
 		auto it = s_models.find(tag);
 		assert(it != s_models.end());
-		
+
 		for (auto& buffer : it->second.m_buffers)
 		{
 			Buffer::Destroy(buffer.GetTag());

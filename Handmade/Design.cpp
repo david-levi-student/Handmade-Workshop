@@ -10,15 +10,7 @@
 #include "Utility.h"
 
 //======================================================================================================
-Design::Design()
-{
-	m_minorWidth = 0;
-	m_majorWidth = 0;
-	m_minorHeight = 0;
-	m_majorHeight = 0;
-	m_resolution = glm::ivec2(0);
-	m_sceneRotation = glm::vec3(45.0f, -30.0f, 0.0f);
-}
+Design::Design() {}
 //======================================================================================================
 bool Design::OnEnter()
 {

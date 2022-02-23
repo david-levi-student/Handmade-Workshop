@@ -1,7 +1,7 @@
 #pragma once
 
 /*===================================================================#
-| 'Design' source files last updated on 8 December 2021              |
+| 'Design' source files last updated on 23 February 2022             |
 #===================================================================*/
 
 #include <deque>
@@ -45,13 +45,13 @@ private:
 	void RenderConsoleWindow();
 	void RenderPropertiesWindow();
 
-	GLint m_minorWidth;
-	GLint m_majorWidth;
-	GLint m_minorHeight;
-	GLint m_majorHeight;
+	GLint m_minorWidth{ 0 };
+	GLint m_majorWidth{ 0 };
+	GLint m_minorHeight{ 0 };
+	GLint m_majorHeight{ 0 };
 
-	glm::ivec2 m_resolution;
-	glm::vec3 m_sceneRotation;
+	glm::ivec2 m_resolution{ 0U };
+	glm::vec3 m_sceneRotation{ 45.0f, -30.0f, 0.0f };
 
 	std::unique_ptr<Grid> m_grid;
 	std::unique_ptr<Axes> m_axes;

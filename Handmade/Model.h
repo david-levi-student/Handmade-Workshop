@@ -1,7 +1,7 @@
 #pragma once
 
 /*===================================================================#
-| 'Model' source files last updated on 25 October 2021               |
+| 'Model' source files last updated on 23 February 2022              |
 #====================================================================#
 | Class has not been fully tested. No known issues found.            |
 #===================================================================*/
@@ -93,7 +93,7 @@ private:
 	static void SortVertexData(Mesh& newMesh, const Mesh& oldMesh,
 		const std::vector<Face>& faces);
 
-	glm::vec3 m_dimension;
+	glm::vec3 m_dimension{ 0.0f };
 
 	//There should always be the same amount 
 	//of buffers as there are mesh groups
