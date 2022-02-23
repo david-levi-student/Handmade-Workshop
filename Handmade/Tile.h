@@ -1,7 +1,7 @@
 #pragma once
 
 /*===================================================================#
-| 'Tile' source files last updated on 23 November 2021               |
+| 'Tile' source files last updated on 23 February 2022               |
 #====================================================================#
 | Class has not been fully tested. No known issues found.            |
 #===================================================================*/
@@ -43,21 +43,21 @@ public:
 
 private:
 
-	bool m_isAnimated;
-	bool m_isAnimationDead;
-	bool m_isAnimationLooping;
-	bool m_isAnimationLoopFinal;
+	bool m_isAnimated = false;
+	bool m_isAnimationDead = false;
+	bool m_isAnimationLooping = false;
+	bool m_isAnimationLoopFinal = false;
 
-	GLuint m_tileIndex;
+	GLuint m_tileIndex{ 0 };
 	GLuint m_spriteSheetCol;
 	GLuint m_spriteSheetRow;
-	GLfloat m_animationVelocity;
+	GLfloat m_animationVelocity{ 0.1f };
 
 	Buffer m_buffer;
 	Texture m_texture;
 
-	glm::vec4 m_color;
 	glm::vec2 m_dimension;
+	glm::vec4 m_color{ 1.0f };
 
 	const GLuint CORNERS = 4;
 	const GLuint VERTICES_PER_TILE = 6;

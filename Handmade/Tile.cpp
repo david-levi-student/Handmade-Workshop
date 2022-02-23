@@ -4,46 +4,36 @@
 #include "Tile.h"
 
 //======================================================================================================
-Tile::Tile(const std::string& filename, 
-	GLfloat width, GLfloat height, GLuint spriteSheetCol, GLuint spriteSheetRow) 
-	: m_buffer("Tile", spriteSheetCol * spriteSheetRow * 6, true)  // VERTICES_PER_TILE = 6;
+Tile::Tile(const std::string& filename,
+	GLfloat width, GLfloat height, GLuint spriteSheetCol, GLuint spriteSheetRow)
+	: m_spriteSheetCol(spriteSheetCol), m_spriteSheetRow(spriteSheetRow),
+	m_buffer("Tile", spriteSheetCol* spriteSheetRow * 6, true)
 {
-	m_tileIndex = 0;
-	m_color = glm::vec4(1.0f);
-	m_animationVelocity = 0.1f;
-	m_spriteSheetCol = spriteSheetCol;
-	m_spriteSheetRow = spriteSheetRow;
 	m_dimension = glm::vec2(width, height);
 
 	//TODO - Find a better tag name
 	m_texture.Load(filename, filename);
 
-	m_isAnimated = false;
-	m_isAnimationDead = false;
-	m_isAnimationLooping = false;
-	m_isAnimationLoopFinal = false;
-
-	GLuint offsetUV = 0;
-	GLuint offsetColor = 0;
-	GLuint offsetIndex = 0;
-	GLuint offsetVertex = 0;
+	auto offsetUV = 0U;
+	auto offsetColor = 0U;
+	auto offsetIndex = 0U;
+	auto offsetVertex = 0U;
 
 	const auto TOTAL_DIMENSION = m_spriteSheetCol * m_spriteSheetRow;
-	const auto BYTES_PER_TILE_UV = static_cast<GLuint>(Buffer::ComponentSize::UV) * 
+	const auto BYTES_PER_TILE_UV = static_cast<GLuint>(Buffer::ComponentSize::UV) *
 		CORNERS * sizeof(GLfloat);
-	const auto BYTES_PER_TILE_COLOR = static_cast<GLuint>(Buffer::ComponentSize::RGBA) * 
+	const auto BYTES_PER_TILE_COLOR = static_cast<GLuint>(Buffer::ComponentSize::RGBA) *
 		CORNERS * sizeof(GLfloat);
-	const auto BYTES_PER_TILE_VERTEX = static_cast<GLuint>(Buffer::ComponentSize::XYZ) * 
+	const auto BYTES_PER_TILE_VERTEX = static_cast<GLuint>(Buffer::ComponentSize::XYZ) *
 		CORNERS * sizeof(GLfloat);
-	const auto BYTES_PER_TILE_INDEX = static_cast<GLuint>(Buffer::ComponentSize::XYZ) * 
+	const auto BYTES_PER_TILE_INDEX = static_cast<GLuint>(Buffer::ComponentSize::XYZ) *
 		(CORNERS - 1) * sizeof(GLuint);
-		  
+
 	const auto TOTAL_BYTES_VBO_VERT = TOTAL_DIMENSION * BYTES_PER_TILE_VERTEX;
 	const auto TOTAL_BYTES_VBO_COLOR = TOTAL_DIMENSION * BYTES_PER_TILE_COLOR;
 	const auto TOTAL_BYTES_VBO_UV = TOTAL_DIMENSION * BYTES_PER_TILE_UV;
 	const auto TOTAL_BYTES_EBO = TOTAL_DIMENSION * BYTES_PER_TILE_INDEX;
 
-	//m_buffer.Create("Tile", TOTAL_DIMENSION * VERTICES_PER_TILE, true);
 	m_buffer.LinkEBO();
 
 	glm::vec2 halfDimension = m_dimension * 0.5f;
@@ -230,7 +220,7 @@ void Tile::Render(Shader& shader)
 	}
 
 	m_texture.Bind();
-	m_buffer.Render(Buffer::RenderMode::Triangles, 
+	m_buffer.Render(Buffer::RenderMode::Triangles,
 		(m_tileIndex * BYTES_PER_TILE_INDEX), VERTICES_PER_TILE);
 	m_texture.Unbind();
 }
