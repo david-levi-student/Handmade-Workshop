@@ -1,7 +1,7 @@
 #pragma once
 
 /*===================================================================#
-| 'Object' source files last updated on 8 December 2021              |
+| 'Object' source files last updated on 23 February 2022             |
 #====================================================================#
 | Class has not been fully tested. No known issues found.            |
 #===================================================================*/
@@ -46,17 +46,18 @@ public:
 
 protected:
 
-	bool m_isLit;
-	bool m_isAlive;
-	bool m_isActive;
-	bool m_isVisible;
-	bool m_isTextured;
+	bool m_isLit{ false };
+	bool m_isAlive{ true };
+	bool m_isActive{ true };
+	bool m_isVisible{ true };
+	bool m_isTextured{ false };
+
+	GLuint m_priority{ 0 };
+	glm::vec4 m_color{ 1.0f };
+	glm::mat3 m_normalMatrix{ 1.0f };
 
 	Object* m_parent;
 	std::string m_tag;
-	glm::vec4 m_color;
-	GLuint m_priority;
 	Transform m_transform;
-	glm::mat3 m_normalMatrix;
 
 };

@@ -2,19 +2,7 @@
 #include "Shader.h"
 
 //======================================================================================================
-Object::Object(Object* parent)
-{
-	m_priority = 0;
-	m_parent = parent;
-	
-	m_isLit = false;
-	m_isAlive = true;
-	m_isActive = true;
-	m_isVisible = true;
-	m_isTextured = false;
-
-	m_normalMatrix = glm::mat3(1.0f);
-}
+Object::Object(Object* parent) : m_parent(parent) {}
 //======================================================================================================
 bool Object::IsLit() const
 {
