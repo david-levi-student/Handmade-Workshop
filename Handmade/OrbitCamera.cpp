@@ -4,14 +4,7 @@
 #include "Shader.h"
 
 //======================================================================================================
-OrbitCamera::OrbitCamera()
-{
-	m_sensitivity = 0.0f;
-	m_zoomDistance = 5.0f;
-	m_target = glm::vec3(0.0f);
-	m_pitchRange = glm::vec2(-89.0f, 89.0f);
-	m_zoomDistanceRange = glm::vec2(0.5f, 50.0f);
-}
+OrbitCamera::OrbitCamera() {}
 //======================================================================================================
 void OrbitCamera::SetSensitivity(GLfloat sensitivity)
 {
@@ -56,8 +49,8 @@ void OrbitCamera::Rotate(GLint motionX, GLint motionY)
 	auto rotation = m_transform.GetEulerAngles();
 
 	//The y rotation is the azimuth and the x rotation is the elevation
-	rotation.y += motionX * m_sensitivity; 
-	rotation.x += -motionY * m_sensitivity; 
+	rotation.y += motionX * m_sensitivity;
+	rotation.x += -motionY * m_sensitivity;
 	rotation.x = glm::clamp(rotation.x, m_pitchRange.x, m_pitchRange.y);
 
 	m_transform.SetRotation(rotation);

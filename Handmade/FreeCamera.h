@@ -1,7 +1,7 @@
 #pragma once
 
 /*===================================================================#
-| 'FreeCamera' source files last updated on 26 July 2021             |
+| 'FreeCamera' source files last updated on 23 February 2022         |
 #====================================================================#
 | Class has not been fully tested. No known issues found.            |
 #===================================================================*/
@@ -38,9 +38,9 @@ public:
 
 private:
 
-	bool m_isFlying;
-	GLfloat m_sensitivity;
-	glm::vec2 m_pitchRange;
-	GLfloat m_clampedYPosition;
+	bool m_isFlying{ true };
+	GLfloat m_sensitivity{ 0.0f };
+	glm::vec2 m_pitchRange{ -89.0f, 89.0f };
+	GLfloat m_clampedYPosition{ 1.0f };
 
 };

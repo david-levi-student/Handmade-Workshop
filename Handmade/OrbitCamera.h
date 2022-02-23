@@ -1,7 +1,7 @@
 #pragma once
 
 /*===================================================================#
-| 'OrbitCamera' source files last updated on 26 July 2021            |
+| 'OrbitCamera' source files last updated on 23 February 2022        |
 #====================================================================#
 | Class has not been fully tested. No known issues found.            |
 #===================================================================*/
@@ -33,11 +33,11 @@ public:
 
 private:
 
-	GLfloat m_sensitivity;
-	GLfloat m_zoomDistance;
-	
-	glm::vec3 m_target;
-	glm::vec2 m_pitchRange;
-	glm::vec2 m_zoomDistanceRange;
+	GLfloat m_sensitivity{ 0.0f };
+	GLfloat m_zoomDistance{ 5.0f };
+
+	glm::vec3 m_target{ 0.0f };
+	glm::vec2 m_pitchRange{ -89.0f, 89.0f };
+	glm::vec2 m_zoomDistanceRange{ 0.5f, 50.0f };
 
 };

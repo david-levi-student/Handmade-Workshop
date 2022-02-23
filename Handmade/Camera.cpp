@@ -5,20 +5,7 @@
 #include "Shader.h"
 
 //======================================================================================================
-Camera::Camera()
-{
-	m_velocity = 0.0f;
-	m_fieldOfView = 45.0f;
-	m_viewMatrix = glm::mat4(1.0f);
-	m_projectionMatrix = glm::mat4(1.0f);
-	
-	m_viewport = glm::ivec4(0);
-	m_resolution = glm::ivec2(0);
-	m_backgroundColor = glm::vec4(0.0f);
-
-	m_up = glm::vec3(0.0f, 1.0f, 0.0f);
-	m_forward = glm::vec3(0.0f, 0.0f, -1.0f);
-}
+Camera::Camera() {}
 //======================================================================================================
 const glm::ivec2 Camera::GetResolution() const
 {

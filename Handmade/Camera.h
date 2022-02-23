@@ -1,7 +1,7 @@
 #pragma once
 
 /*===================================================================#
-| 'Camera' source files last updated on 23 November 2021             |
+| 'Camera' source files last updated on 23 February 2022             |
 #====================================================================#
 | Class has not been fully tested. No known issues found.            |
 #===================================================================*/
@@ -28,16 +28,16 @@ public:
 	virtual ~Camera() = 0 {}
 
 	const glm::ivec2 GetResolution() const;
-	
+
 	void SetVelocity(GLfloat velocity);
 	void SetFieldOfView(GLfloat fieldOfView);
 	void SetViewport(GLint x, GLint y, GLsizei width, GLsizei height);
-	
+
 	void SetBackgroundColor(const glm::vec4& backgroundColor);
 	void SetBackgroundColor(const glm::uvec4& backgroundColor);
 	void SetBackgroundColor(GLuint r, GLuint g, GLuint b, GLuint a = 1U);
 	void SetBackgroundColor(GLfloat r, GLfloat g, GLfloat b, GLfloat a = 1.0f);
-	
+
 	void CreatePerspView();
 	void CreateOrthoView(Origin2D origin = Origin2D::BottomLeft);
 
@@ -52,17 +52,17 @@ public:
 
 protected:
 
-	GLfloat m_velocity;
-	GLfloat m_fieldOfView;
+	GLfloat m_velocity{ 0.0f };
+	GLfloat m_fieldOfView{ 45.0f };
 
-	glm::vec3 m_up;
-	glm::vec3 m_forward;
-	
-	glm::ivec4 m_viewport;
-	glm::ivec2 m_resolution;
-	glm::vec4 m_backgroundColor;
+	glm::vec3 m_up{ 0.0f, 1.0f, 0.0f };
+	glm::vec3 m_forward{ 0.0f, 0.0f, -1.0f };
 
-	glm::mat4 m_viewMatrix;
-	glm::mat4 m_projectionMatrix;
+	glm::ivec4 m_viewport{ 0 };
+	glm::ivec2 m_resolution{ 0 };
+	glm::vec4 m_backgroundColor{ 0.0f };
+
+	glm::mat4 m_viewMatrix{ 1.0f };
+	glm::mat4 m_projectionMatrix{ 1.0f };
 
 };

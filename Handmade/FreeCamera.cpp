@@ -5,12 +5,6 @@
 //======================================================================================================
 FreeCamera::FreeCamera()
 {
-	m_isFlying = true;
-	m_sensitivity = 0.0f;
-	m_clampedYPosition = 1.0f;
-	m_forward = glm::vec3(0.0f);
-	m_pitchRange = glm::vec2(-89.0f, 89.0f);
-
 	//We set the yaw to an initial 90 degrees so that the
 	//forward vector calculations later result in (0, 0, -1)
 	m_transform.SetRotation(0.0f, -90.0f, 0.0f);
@@ -64,7 +58,7 @@ void FreeCamera::MoveDown()
 //======================================================================================================
 void FreeCamera::MoveLeft()
 {
-	m_transform.Translate(glm::normalize(glm::cross(-m_forward, m_up)) * m_velocity, 
+	m_transform.Translate(glm::normalize(glm::cross(-m_forward, m_up)) * m_velocity,
 		Transform::Space::Global);
 }
 //======================================================================================================
@@ -139,7 +133,7 @@ void FreeCamera::Update(GLfloat deltaTime)
 //======================================================================================================
 void FreeCamera::SendToShader(Shader& shader)
 {
-	m_viewMatrix = glm::lookAt(m_transform.GetPosition(), 
+	m_viewMatrix = glm::lookAt(m_transform.GetPosition(),
 		m_transform.GetPosition() + m_forward, m_up);
 
 	Camera::SendToShader(shader);
