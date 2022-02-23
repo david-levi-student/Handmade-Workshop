@@ -3,13 +3,15 @@
 #include "Input.h"
 #include "Shader.h"
 
+//Note:
+//We multiply by 2 to represent each line's vertex 
+//and add 4 for the two extra lines to close the grid
+//m_buffer("Grid", (size * 4 * 2) + 4) 
 //======================================================================================================
 Grid::Grid(bool hasSpaceForAxes, GLint size, GLfloat lineWidth)
-	: m_buffer("Grid", (size * 4 * 2) + 4)  //QUADRANTS = 4
+	: m_size(size), m_buffer("Grid", (size * 4 * 2) + 4), //TODO - Remove magic numbers
+	m_lineWidth(lineWidth), m_hasSpaceForAxes(hasSpaceForAxes)  //QUADRANTS = 4
 {
-	m_size = size;
-	m_lineWidth = lineWidth;
-	m_hasSpaceForAxes = hasSpaceForAxes;
 	Create();
 }
 //======================================================================================================
@@ -81,10 +83,6 @@ void Grid::Create()
 	{
 		m_buffer.Destroy();
 	}*/
-
-	//We multiply by 2 to represent each line's vertex 
-	//and add 4 for the two extra lines to close the grid
-	//m_buffer.Create("Grid", (m_size * QUADRANTS * 2) + 4);
 
 	m_buffer.FillVBO(Buffer::VBO::VertexBuffer,
 		(GLfloat*)nullptr, TOTAL_BYTES_VERTEX_VBO, Buffer::Fill::Ongoing);

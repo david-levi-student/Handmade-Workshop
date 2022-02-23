@@ -1,7 +1,7 @@
 #pragma once
 
 /*===================================================================#
-| 'Axes' source files last updated on 25 October 2021                |
+| 'Axes' source files last updated on 23 February 2022               |
 #====================================================================#
 | Class has not been fully tested. No known issues found.            |
 #===================================================================*/
@@ -36,17 +36,17 @@ private:
 
 	void Create();
 
-	GLint m_size;
-	bool m_isPrimitive;
-	GLfloat m_lineWidth;
+	GLint m_size{ 0 };
+	GLfloat m_lineWidth{ 0.0f };
+	bool m_isPrimitive{ false };
+
+	glm::vec3 m_arrowTipPositionX{ 0.0f };
+	glm::vec3 m_arrowTipPositionY{ 0.0f };
+	glm::vec3 m_arrowTipPositionZ{ 0.0f };
 
 	Model m_model;
 	Buffer m_buffer;
 
-	glm::vec3 m_arrowTipPositionX;
-	glm::vec3 m_arrowTipPositionY;
-	glm::vec3 m_arrowTipPositionZ;
-
 	static GLuint s_totalObjects;
-	
+
 };

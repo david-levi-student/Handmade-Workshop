@@ -1,7 +1,7 @@
 #pragma once
 
 /*===================================================================#
-| 'Grid' source files last updated on 28 September 2021              |
+| 'Grid' source files last updated on 23 February 2022               |
 #====================================================================#
 | Class has not been fully tested. No known issues found.            |
 #===================================================================*/
@@ -14,7 +14,7 @@ class Grid : public Object
 
 public:
 
-	Grid(bool hasSpaceForAxes = false, 
+	Grid(bool hasSpaceForAxes = false,
 		GLint size = 15, GLfloat lineWidth = 1.5f);
 	virtual ~Grid();
 

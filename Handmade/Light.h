@@ -1,7 +1,7 @@
 #pragma once
 
 /*===================================================================#
-| 'Light' source files last updated on 23 November 2021              |
+| 'Light' source files last updated on 23 February 2022              |
 #====================================================================#
 | Class has not been fully tested. No known issues found.            |
 #===================================================================*/
@@ -44,15 +44,15 @@ private:
 
 	static GLuint s_totalLights;
 
-	GLuint m_lightNumber;
+	GLuint m_lightNumber{ s_totalLights++ };
 
-	GLfloat m_attenuationLinear;
-	GLfloat m_attenuationConstant;
-	GLfloat m_attenuationQuadratic;
+	GLfloat m_attenuationLinear{ 0.05f };
+	GLfloat m_attenuationConstant{ 0.2f };
+	GLfloat m_attenuationQuadratic{ 0.05f };
 
-	glm::vec3 m_ambient;
-	glm::vec3 m_diffuse;
-	glm::vec3 m_specular;
+	glm::vec3 m_ambient{ 1.0f };
+	glm::vec3 m_diffuse{ 1.0f };
+	glm::vec3 m_specular{ 1.0f };
 
 	Buffer m_buffer;
 
