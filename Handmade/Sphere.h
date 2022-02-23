@@ -16,7 +16,7 @@ class Sphere : public Object
 
 public:
 
-	Sphere(GLfloat radius = 1.0f, GLuint segments = 25, GLuint slices = 25,
+	Sphere(Object* parent, GLfloat radius = 1.0f, GLuint segments = 25, GLuint slices = 25,
 		GLfloat r = 1.0f, GLfloat g = 1.0f, GLfloat b = 1.0f, GLfloat a = 1.0f);
 	virtual ~Sphere();
 

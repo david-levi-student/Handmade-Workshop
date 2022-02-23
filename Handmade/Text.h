@@ -28,7 +28,7 @@ public:
 
 	static void SetRootFolder(const std::string& rootFolder);
 
-	Text(const std::string& tag = "",
+	Text(Object* parent, const std::string& tag = "",
 		const std::string& filename = "", GLuint fontSize = 10U);
 	Text(const Text& copy);
 	virtual ~Text();

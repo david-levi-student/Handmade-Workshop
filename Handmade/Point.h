@@ -18,7 +18,8 @@ class Point : public Object
 
 public:
 
-	Point(GLfloat pointSize = 5.0f,
+	Point(Object* parent, 
+		GLfloat pointSize = 5.0f,
 		GLfloat r = 1.0f, GLfloat g = 1.0f, GLfloat b = 1.0f, GLfloat a = 1.0f);
 	virtual ~Point();
 

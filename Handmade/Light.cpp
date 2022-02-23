@@ -3,7 +3,7 @@
 GLuint Light::s_totalLights = 0;
 
 //======================================================================================================
-Light::Light(GLfloat x, GLfloat y, GLfloat z) : m_buffer("Light", 1)
+Light::Light(GLfloat x, GLfloat y, GLfloat z) : Object(nullptr), m_buffer("Light", 1)
 {
 	m_transform.SetPosition(x, y, z);
 

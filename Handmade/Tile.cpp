@@ -4,9 +4,9 @@
 #include "Tile.h"
 
 //======================================================================================================
-Tile::Tile(const std::string& filename,
+Tile::Tile(Object* parent, const std::string& filename,
 	GLfloat width, GLfloat height, GLuint spriteSheetCol, GLuint spriteSheetRow)
-	: m_spriteSheetCol(spriteSheetCol), m_spriteSheetRow(spriteSheetRow),
+	: Object(parent), m_spriteSheetCol(spriteSheetCol), m_spriteSheetRow(spriteSheetRow),
 	m_buffer("Tile", spriteSheetCol* spriteSheetRow * 6, true)
 {
 	m_dimension = glm::vec2(width, height);

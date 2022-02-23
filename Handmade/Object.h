@@ -17,7 +17,7 @@ class Object
 
 public:
 
-	Object(Object* parent = nullptr);
+	Object(Object* parent);
 	virtual ~Object() = 0 {}
 
 	bool IsLit() const;

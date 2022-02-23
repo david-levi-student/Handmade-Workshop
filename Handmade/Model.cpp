@@ -259,10 +259,11 @@ bool Model::Load(const std::string& tag,
 	return true;
 }
 //======================================================================================================
-Model::Model(const std::string& tag,
+Model::Model(Object* parent, 
+	const std::string& tag,
 	const std::string& filename,
 	bool isNormalized,
-	const std::string& defaultMaterial)
+	const std::string& defaultMaterial) : Object(parent)
 {
 	if (!filename.empty())
 	{

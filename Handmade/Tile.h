@@ -18,7 +18,7 @@ class Tile : public Object
 
 public:
 
-	Tile(const std::string& filename,
+	Tile(Object* parent, const std::string& filename,
 		GLfloat width = 1.0f, GLfloat height = 1.0f,
 		GLuint spriteSheetCol = 1, GLuint spriteSheetRow = 1);
 	virtual ~Tile();
