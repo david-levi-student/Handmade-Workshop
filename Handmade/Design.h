@@ -75,7 +75,9 @@ private:
 	std::unique_ptr<Light> m_light;
 	std::unique_ptr<Model> m_model;
 
-	std::unique_ptr<Quad> m_quad;
+	//Generic object (for testing)
+	std::unique_ptr<Object> m_object;
+
 	//std::unique_ptr<Cuboid> m_cube;
 	//std::unique_ptr<Sphere> m_sphere;
 
