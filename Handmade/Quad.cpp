@@ -66,11 +66,6 @@ void Quad::SetDimension(GLfloat width, GLfloat height)
 	m_buffer.FillVBO(Buffer::VBO::VertexBuffer, vertices, sizeof(vertices), Buffer::Fill::Ongoing);
 }
 //======================================================================================================
-const glm::vec4& Quad::GetColor() const
-{
-	return m_color;
-}
-//======================================================================================================
 void Quad::SetTextureScale(GLfloat width, GLfloat height)
 {
 	GLfloat UVs[] = { 0.0f, 0.0f,

@@ -33,7 +33,8 @@ public:
 	void IsTextured(bool flag);
 
 	GLuint GetPriority() const;
-	const std::string& GetTag();
+	const std::string& GetTag() const;
+	const glm::vec4& GetColor() const;
 
 	Transform& GetTransform();
 

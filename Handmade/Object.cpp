@@ -59,9 +59,14 @@ GLuint Object::GetPriority() const
 	return m_priority;
 }
 //======================================================================================================
-const std::string& Object::GetTag()
+const std::string& Object::GetTag() const
 {
 	return m_tag;
+}
+//======================================================================================================
+const glm::vec4& Object::GetColor() const
+{
+	return m_color;
 }
 //======================================================================================================
 Transform& Object::GetTransform()

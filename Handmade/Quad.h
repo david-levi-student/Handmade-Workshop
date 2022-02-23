@@ -18,7 +18,6 @@ public:
 		GLfloat r = 0.5f, GLfloat g = 0.5f, GLfloat b = 0.5f, GLfloat a = 1.0f);
 	virtual ~Quad();
 
-	const glm::vec4& GetColor() const;
 	void SetTextureScale(GLfloat width, GLfloat height);
 
 	void SetColor(const glm::vec4& color);
