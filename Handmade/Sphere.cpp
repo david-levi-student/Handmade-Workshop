@@ -129,7 +129,18 @@ void Sphere::Render(Shader& shader)
 	m_buffer.LinkVBO(shader.GetAttributeID("colorIn"),
 		Buffer::VBO::ColorBuffer, Buffer::ComponentSize::RGBA, Buffer::DataType::FloatData);
 
-	shader.SendData("model", m_transform.GetMatrix());
+	//Quick fix to allow child objects without parent objects (this avoids a crash)
+	//TODO - What we require here is a proper parent/child linkage of objects
+	if (m_parent)
+	{
+		shader.SendData("model", m_parent->GetTransform().GetMatrix() * m_transform.GetMatrix());
+	}
+
+	else
+	{
+		shader.SendData("model", m_transform.GetMatrix());
+	}
+
 	shader.SendData("isTextured", static_cast<GLuint>(m_isTextured));
 
 	m_buffer.Render(Buffer::RenderMode::Triangles);
