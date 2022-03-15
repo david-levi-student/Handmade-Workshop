@@ -488,6 +488,11 @@ void Design::RenderPropertiesWindow()
 		m_object->GetTransform().SetScale(scale);
 	}
 
+	if (ImGui::Button("Reset", ImVec2(80, 25)))
+	{
+		m_object->GetTransform().SetIdentity();
+	}
+
 	for (int i = 0; i < 5; i++)
 	{
 		ImGui::Spacing();
