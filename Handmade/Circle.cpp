@@ -5,6 +5,8 @@ Circle::Circle(Object* parent,
 	GLfloat radius, GLuint slices, GLfloat r, GLfloat g, GLfloat b, GLfloat a)
 	: Object(parent), m_slices(slices), m_radius(radius), m_buffer("Circle", slices + 1)
 {
+	m_color = glm::vec4(r, g, b, a);
+
 	auto offsetVertex = 0U;
 	auto offsetColor = 0U;
 
@@ -96,6 +98,7 @@ void Circle::SetColor(GLfloat r, GLfloat g, GLfloat b, GLfloat a)
 		m_buffer.AppendVBO(Buffer::VBO::ColorBuffer, colors, sizeof(colors), offset);
 		offset += sizeof(colors);
 	}
+
 	m_color = glm::vec4(r, g, b, a);
 }
 //======================================================================================================
