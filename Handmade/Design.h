@@ -1,9 +1,4 @@
 #pragma once
-
-/*===================================================================#
-| 'Design' source files last updated on 23 February 2022             |
-#===================================================================*/
-
 #include <deque>
 #include <memory>
 #include <vector>

@@ -1,11 +1,4 @@
 #pragma once
-
-/*===================================================================#
-| 'Text' source files last updated on 22 February 2022                |
-#====================================================================#
-| Class has gone through initial tests. No known issues found.       |
-#===================================================================*/
-
 #include <map>
 #include <ft2build.h>
 #include <freetype\freetype.h>

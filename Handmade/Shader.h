@@ -1,11 +1,4 @@
 #pragma once
-
-/*===================================================================#
-| 'Shader' source files last updated on 22 February 2022             |
-#====================================================================#
-| Class has not been fully tested. No known issues found.            |
-#===================================================================*/
-
 #include <map>
 #include <string>
 #include "GLAD/gl.h"

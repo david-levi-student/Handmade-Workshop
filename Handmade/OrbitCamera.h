@@ -1,11 +1,4 @@
 #pragma once
-
-/*===================================================================#
-| 'OrbitCamera' source files last updated on 23 February 2022        |
-#====================================================================#
-| Class has not been fully tested. No known issues found.            |
-#===================================================================*/
-
 #include "Camera.h"
 
 class OrbitCamera : public Camera

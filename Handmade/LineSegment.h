@@ -1,11 +1,4 @@
 #pragma once
-
-/*===================================================================#
-| 'LineSegment' source files last updated on 22 November 2021        |
-#====================================================================#
-| Class has not been fully tested. No known issues found.            |
-#===================================================================*/
-
 #include "GLAD/gl.h"
 #include <glm.hpp>
 

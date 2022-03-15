@@ -1,17 +1,10 @@
 #pragma once
-
-/*===================================================================#
-| 'App' source files last updated on 22 February 2022                |
-#====================================================================#
-| Class has not been fully tested. No known issues found.            |
-#===================================================================*/
+#include <memory>
+#include "State.h"
 
 //This class implements RAII which means the ctor and dtor manage the 
 //initialization and shutdown respectively and avoid code clutter in 
 //main.cpp. This class works but has not been fully tested for issues.
-
-#include <memory>
-#include "State.h"
 
 class App
 {

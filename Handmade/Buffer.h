@@ -1,11 +1,4 @@
 #pragma once
-
-/*===================================================================#
-| 'Buffer' source files last updated on 22 February 2022             |
-#====================================================================#
-| Class has not been fully tested. No known issues found.            |
-#===================================================================*/
-
 #include <array>
 #include <map>
 #include <string>

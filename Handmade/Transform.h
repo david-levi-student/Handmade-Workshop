@@ -1,11 +1,4 @@
 #pragma once
-
-/*===================================================================#
-| 'Transform' source files last updated on 22 February 2022          |
-#====================================================================#
-| Class has not been fully tested. No known issues found.            |
-#===================================================================*/
-
 #include "GLAD/gl.h"
 #include <glm.hpp>
 #include <gtc/quaternion.hpp>
