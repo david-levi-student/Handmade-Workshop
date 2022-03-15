@@ -478,13 +478,13 @@ void Design::RenderPropertiesWindow()
 
 	if (isUniformScale)
 	{
-		ImGui::SliderFloat("Scale", &scale.x, 1.0f, 30.0f, "%.2f");
+		ImGui::SliderFloat("Scale", &scale.x, 0.01f, 30.0f, "%.2f");
 		m_object->GetTransform().SetScale(glm::vec3(scale.x));
 	}
 
 	else
 	{
-		ImGui::SliderFloat3("Scale", &scale.x, 1.0f, 30.0f, "%.2f");
+		ImGui::SliderFloat3("Scale", &scale.x, 0.01f, 30.0f, "%.2f");
 		m_object->GetTransform().SetScale(scale);
 	}
 
