@@ -5,6 +5,7 @@
 #include <glm.hpp>
 #include "Audio.h"
 #include "Axes.h"
+#include "Circle.h"
 #include "Cuboid.h"
 #include "FreeCamera.h"
 #include "Grid.h"
