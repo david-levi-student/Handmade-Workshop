@@ -4,6 +4,7 @@
 #include "Buffer.h"
 #include "Object.h"
 
+//TODO - Consider not deriving this from Object
 //TODO - Add line start/end position to ctor so that we have an actual line to begin with
 //TODO - Add SetStart/end position functions to set the absolute values of the line segment
 

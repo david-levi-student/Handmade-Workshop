@@ -4,6 +4,7 @@
 #include "Buffer.h"
 #include "Object.h"
 
+//TODO - Consider not deriving this from Object
 //TODO - Add position value to the ctor (use David's MFC app as a reference)
 
 class Point : public Object
