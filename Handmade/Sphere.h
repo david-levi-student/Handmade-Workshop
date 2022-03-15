@@ -24,11 +24,9 @@ public:
 
 private:
 
+	Buffer m_buffer;
 	GLuint m_slices;
 	GLfloat m_radius;
 	GLuint m_segments;
-
-	Buffer m_buffer;
-	glm::vec4 m_color;
 
 };
