@@ -459,6 +459,12 @@ void Design::RenderPropertiesWindow()
 	ImGui::TextColored({ 0.0f, 0.56f, 0.8f, 1.0f }, "Transform");
 	ImGui::Separator();
 	
+	static auto isGlobal = false;
+	ImGui::Checkbox("Global", &isGlobal);
+
+	static auto isUniformScale = false;
+	ImGui::Checkbox("Uniform scale", &isUniformScale);
+
 	auto position = m_object->GetTransform().GetPosition();
 	ImGui::SliderFloat3("Position", &position.x, -25.0f, 25.0f, "%.2f");
 	m_object->GetTransform().SetPosition(position);
@@ -469,8 +475,18 @@ void Design::RenderPropertiesWindow()
 	m_object->GetTransform().SetRotation(rotation);
 	
 	auto scale = m_object->GetTransform().GetScale();
-	ImGui::SliderFloat3("Scale", &scale.x, 1.0f, 30.0f, "%.2f");
-	m_object->GetTransform().SetScale(scale);
+
+	if (isUniformScale)
+	{
+		ImGui::SliderFloat("Scale", &scale.x, 1.0f, 30.0f, "%.2f");
+		m_object->GetTransform().SetScale(glm::vec3(scale.x));
+	}
+
+	else
+	{
+		ImGui::SliderFloat3("Scale", &scale.x, 1.0f, 30.0f, "%.2f");
+		m_object->GetTransform().SetScale(scale);
+	}
 
 	for (int i = 0; i < 5; i++)
 	{
