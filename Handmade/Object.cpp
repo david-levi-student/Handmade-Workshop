@@ -83,3 +83,9 @@ void Object::SetTag(const std::string& tag)
 {
 	m_tag = tag;
 }
+//======================================================================================================
+void Object::AddChild(const Object* child)
+{
+	//m_children.push_back(std::make_unique<Object>(child));
+	//m_children.back()->m_parent = this;
+}

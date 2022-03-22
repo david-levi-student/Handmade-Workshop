@@ -1,7 +1,9 @@
 #pragma once
 #include "GLAD/gl.h"
 #include <glm.hpp>
+#include <memory>
 #include <string>
+#include <vector>
 #include "Shader.h"
 #include "Transform.h"
 
@@ -34,6 +36,8 @@ public:
 	void SetPriority(GLuint priority);
 	void SetTag(const std::string& tag);
 
+	void AddChild(const Object* child);
+
 	virtual void SetColor(const glm::vec4& color) {}
 	virtual void SetColor(GLfloat r, GLfloat g, GLfloat b, GLfloat a) {}
 
@@ -53,8 +57,10 @@ protected:
 	glm::vec4 m_color{ 1.0f };
 	glm::mat3 m_normalMatrix{ 1.0f };
 
-	Object* m_parent;
 	std::string m_tag;
 	Transform m_transform;
+
+	Object* m_parent;
+	//std::vector<std::unique_ptr<Object>> m_children;
 
 };
