@@ -146,7 +146,7 @@ bool Design::OnEnter()
 
 	//=========================================================================
 
-	ImGui::GetIO().Fonts->AddFontFromFileTTF("Assets/Fonts/Arial.ttf", 16.0f);
+	ImGui::GetIO().Fonts->AddFontFromFileTTF("Assets/Fonts/Quikhand.ttf", FONT_SIZE);
 	ImGui::GetIO().Fonts->Build();
 
 	//=========================================================================

@@ -18,8 +18,9 @@
 #include "State.h"
 #include "Text.h"
 
-const auto MINOR = 0.2f;
-const auto MAJOR = 0.8f;
+const auto MINOR = 0.15f;
+const auto MAJOR = 0.85f;
+const auto FONT_SIZE = 18.0f;
 const auto UI_PADDING = 2.0f;
 const auto MAX_CONSOLE_LOG_SIZE = 1000;
 
