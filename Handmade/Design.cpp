@@ -465,6 +465,8 @@ void Design::RenderPropertiesWindow()
 	static auto isUniformScale = false;
 	ImGui::Checkbox("Uniform scale", &isUniformScale);
 
+	ImGui::Spacing();
+
 	auto position = m_object->GetTransform().GetPosition();
 	ImGui::SliderFloat3("Position", &position.x, -25.0f, 25.0f, "%.2f");
 	m_object->GetTransform().SetPosition(position);
@@ -487,6 +489,8 @@ void Design::RenderPropertiesWindow()
 		ImGui::SliderFloat3("Scale", &scale.x, 0.01f, 30.0f, "%.2f");
 		m_object->GetTransform().SetScale(scale);
 	}
+
+	ImGui::Spacing();
 
 	if (ImGui::Button("Reset", ImVec2(80, 25)))
 	{
