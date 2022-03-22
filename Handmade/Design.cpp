@@ -461,6 +461,17 @@ void Design::RenderHierarchyWindow()
 	ImGui::SetWindowPos("Hierarchy", windowPos);
 	ImGui::SetWindowSize("Hierarchy", windowSize);
 
+	if (ImGui::TreeNode("Scene"))
+	{
+		if (ImGui::TreeNode("Cube"))
+		{
+			ImGui::TreePop();
+
+		}
+
+		ImGui::TreePop();
+	}
+
 	ImGui::End();
 }
 //======================================================================================================
