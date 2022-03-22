@@ -40,6 +40,7 @@ public:
 private:
 
 	void RenderConsoleWindow();
+	void RenderHierarchyWindow();
 	void RenderPropertiesWindow();
 
 	GLint m_minorWidth{ 0 };

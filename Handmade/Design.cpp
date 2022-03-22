@@ -246,7 +246,7 @@ State* Design::Update(int deltaTime)
 	}
 
 	m_grid->GetTransform().SetRotation(m_sceneRotation);
-	
+
 	//==============================================================================
 
 	for (const auto& object : m_objects)
@@ -282,16 +282,20 @@ bool Design::Render()
 		Screen::Instance()->Refresh();
 	};
 
+	//Hierarchy viewport
+	SetViewport(glm::ivec4(0, m_minorHeight, m_minorWidth, m_resolution.y - m_minorHeight),
+		glm::uvec4(255U, 200U, 0U, 1U));
+
 	//Console viewport
 	SetViewport(glm::ivec4(0, 0, m_majorWidth, m_minorHeight),
 		glm::uvec4(255U, 200U, 0U, 1U));
 
 	//Properties viewport
 	SetViewport(glm::ivec4(m_majorWidth, 0, m_minorWidth, m_resolution.y),
-		glm::uvec4(0U, 144U, 255U, 1U));
+		glm::uvec4(255U, 200U, 0U, 1U));
 
 	//Scene viewport
-	m_sceneCamera->SetViewport(0, m_minorHeight, m_majorWidth, m_majorHeight);
+	m_sceneCamera->SetViewport(m_minorWidth, m_minorHeight, m_resolution.x - (m_minorWidth * 2), m_majorHeight);
 	m_sceneCamera->CreatePerspView();
 
 	mainShader.Use();
@@ -399,6 +403,7 @@ bool Design::Render()
 	ImGui::NewFrame();
 
 	RenderConsoleWindow();
+	RenderHierarchyWindow();
 	RenderPropertiesWindow();
 
 	ImGui::Render();
@@ -423,7 +428,7 @@ void Design::RenderConsoleWindow()
 
 	auto windowPos = ImVec2(UI_PADDING,
 		static_cast<float>(m_majorHeight + UI_PADDING + 1.0f));
-	auto windowSize = ImVec2(static_cast<float>(m_majorWidth - UI_PADDING * 2.0f),
+	auto windowSize = ImVec2(static_cast<float>(m_majorWidth - UI_PADDING),
 		static_cast<float>(m_minorHeight - UI_PADDING * 2.0f));
 
 	ImGui::SetWindowPos("Output console", windowPos);
@@ -438,6 +443,23 @@ void Design::RenderConsoleWindow()
 	{
 		ImGui::Text(log.c_str());
 	}
+
+	ImGui::End();
+}
+//======================================================================================================
+void Design::RenderHierarchyWindow()
+{
+	ImGui::Begin("Hierarchy", nullptr,
+		ImGuiWindowFlags_::ImGuiWindowFlags_NoResize |
+		ImGuiWindowFlags_::ImGuiWindowFlags_NoMove |
+		ImGuiWindowFlags_::ImGuiWindowFlags_NoCollapse);
+
+	auto windowPos = ImVec2(static_cast<float>(UI_PADDING), UI_PADDING);
+	auto windowSize = ImVec2(static_cast<float>(m_minorWidth - UI_PADDING * 2.0f),
+		static_cast<float>(m_resolution.y - m_minorHeight - UI_PADDING));
+
+	ImGui::SetWindowPos("Hierarchy", windowPos);
+	ImGui::SetWindowSize("Hierarchy", windowSize);
 
 	ImGui::End();
 }
@@ -458,7 +480,7 @@ void Design::RenderPropertiesWindow()
 
 	ImGui::TextColored({ 0.0f, 0.56f, 0.8f, 1.0f }, "Transform");
 	ImGui::Separator();
-	
+
 	static auto isGlobal = false;
 	ImGui::Checkbox("Global", &isGlobal);
 
@@ -470,12 +492,12 @@ void Design::RenderPropertiesWindow()
 	auto position = m_object->GetTransform().GetPosition();
 	ImGui::SliderFloat3("Position", &position.x, -25.0f, 25.0f, "%.2f");
 	m_object->GetTransform().SetPosition(position);
-	
+
 	//TODO - There is a tiny bug here with the sliders
 	auto rotation = m_object->GetTransform().GetEulerAngles();
 	ImGui::SliderFloat3("Rotation", &rotation.x, -360.0f, 360.0f, "%.2f");
 	m_object->GetTransform().SetRotation(rotation);
-	
+
 	auto scale = m_object->GetTransform().GetScale();
 
 	if (isUniformScale)
