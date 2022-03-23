@@ -1,8 +1,8 @@
 #include "Line.h"
 
 //======================================================================================================
-Line::Line(Object* parent, GLfloat lineWidth, GLfloat r, GLfloat g, GLfloat b, GLfloat a)
-	: m_buffer("Line", 2), m_lineWidth(lineWidth)
+Line::Line(const std::string& tag, GLfloat lineWidth, GLfloat r, GLfloat g, GLfloat b, GLfloat a)
+	: Object(tag), m_buffer(tag, 2), m_lineWidth(lineWidth)
 {
 	GLfloat colors[] = { r, g, b, a, r, g, b, a };
 	GLfloat vertices[] = { 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f };
@@ -13,7 +13,7 @@ Line::Line(Object* parent, GLfloat lineWidth, GLfloat r, GLfloat g, GLfloat b, G
 //======================================================================================================
 Line::~Line()
 {
-	m_buffer.Destroy("Line");
+	m_buffer.Destroy(m_tag);
 }
 //======================================================================================================
 void Line::SetEndPoints(GLfloat x1, GLfloat y1, GLfloat z1, GLfloat x2, GLfloat y2, GLfloat z2)

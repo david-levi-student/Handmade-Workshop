@@ -11,7 +11,7 @@ class Object
 
 public:
 
-	Object() {}
+	Object(const std::string& tag);
 	virtual ~Object() = 0 {}
 
 	bool IsLit() const;

@@ -7,7 +7,7 @@ class Quad : public Object
 
 public:
 
-	Quad(Object* parent, GLfloat width = 1.0f, GLfloat height = 1.0f,
+	Quad(const std::string& tag, GLfloat width = 1.0f, GLfloat height = 1.0f,
 		GLfloat r = 0.5f, GLfloat g = 0.5f, GLfloat b = 0.5f, GLfloat a = 1.0f);
 	virtual ~Quad();
 

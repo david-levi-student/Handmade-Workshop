@@ -61,8 +61,7 @@ public:
 	static void Unload(const std::string& tag = "");
 	static void SetRootFolder(const std::string& rootFolder);
 
-	Model(Object* parent = nullptr,
-		const std::string& tag = "",
+	Model(const std::string& tag = "",
 		const std::string& filename = "",
 		bool isNormalized = false,
 		const std::string& defaultMaterial = "Chrome");

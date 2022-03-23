@@ -4,7 +4,7 @@
 #include "Shader.h"
 
 //======================================================================================================
-OrbitCamera::OrbitCamera() {}
+OrbitCamera::OrbitCamera(const std::string& tag) : Camera(tag) {}
 //======================================================================================================
 void OrbitCamera::SetSensitivity(GLfloat sensitivity)
 {

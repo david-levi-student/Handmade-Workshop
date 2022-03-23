@@ -13,7 +13,7 @@ class Line : public Object
 
 public:
 
-	Line(Object* parent, 
+	Line(const std::string& tag,
 		GLfloat lineWidth = 2.0f, 
 		GLfloat r = 1.0f, GLfloat g = 1.0f, GLfloat b = 1.0f, GLfloat a = 1.0f);
 	virtual ~Line();

@@ -3,7 +3,7 @@
 #include "Shader.h"
 
 //======================================================================================================
-FreeCamera::FreeCamera()
+FreeCamera::FreeCamera(const std::string& tag) : Camera(tag)
 {
 	//We set the yaw to an initial 90 degrees so that the
 	//forward vector calculations later result in (0, 0, -1)

@@ -132,9 +132,8 @@ void Text::SetRootFolder(const std::string& rootFolder)
 	s_rootFolder = rootFolder;
 }
 //================================================================================================
-Text::Text(Object* parent,
-	const std::string& tag, const std::string& filename, GLuint fontSize)
-	: m_fontSize(fontSize)
+Text::Text(const std::string& tag, const std::string& filename, GLuint fontSize)
+	: Object(tag), m_fontSize(fontSize)
 {
 	m_buffer.LinkEBO();
 
@@ -150,8 +149,9 @@ Text::Text(Object* parent,
 	}
 }
 //================================================================================================
+//TODO - Do we really need a copy ctor?
 Text::Text(const Text& copy)
-	: m_buffer("Text_" + std::to_string(++s_totalObjects), 6, true)
+	: Object(copy.m_tag), m_buffer(copy.m_tag + "_copy", 6, true)
 {
 	m_buffer.LinkEBO();
 	m_font = copy.m_font;

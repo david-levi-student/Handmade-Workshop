@@ -6,7 +6,7 @@ class OrbitCamera : public Camera
 
 public:
 
-	OrbitCamera();
+	OrbitCamera(const std::string& tag);
 	virtual ~OrbitCamera() {}
 
 	void SetSensitivity(GLfloat sensitivity);

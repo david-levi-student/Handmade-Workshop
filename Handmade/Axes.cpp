@@ -5,29 +5,21 @@
 
 GLuint Axes::s_totalObjects = 0;
 //======================================================================================================
-Axes::Axes(const std::string& filenameModel)
+Axes::Axes(const std::string& tag, const std::string& filenameModel) : Object(tag), m_model(tag)
 {
-	m_model.Load("Axes", filenameModel, true);
-	m_model.SetModel("Axes");
+	m_model.Load(tag, filenameModel, true);
+	m_model.SetModel(tag);
 }
 //======================================================================================================
-Axes::Axes(GLint size, GLfloat lineWidth)
-	: m_size(size), m_lineWidth(lineWidth), m_isPrimitive(true), m_buffer("Axes", 6)
+Axes::Axes(const std::string& tag, GLint size, GLfloat lineWidth)
+	: Object(tag), m_size(size), m_lineWidth(lineWidth), m_isPrimitive(true), m_model(tag), m_buffer(tag, 6)
 {
 	Create();
 }
 //======================================================================================================
 Axes::~Axes()
 {
-	//TODO - Unload buffer and model properly
-	/*if (m_isPrimitive)
-	{
-		m_buffer.Destroy();
-	}
-	else
-	{
-		m_model.Unload();
-	}*/
+	m_buffer.Destroy(m_tag);
 }
 //======================================================================================================
 void Axes::SetSize(GLint size)

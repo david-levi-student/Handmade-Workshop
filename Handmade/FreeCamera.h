@@ -6,7 +6,7 @@ class FreeCamera : public Camera
 
 public:
 
-	FreeCamera();
+	FreeCamera(const std::string& tag);
 	virtual ~FreeCamera() {}
 
 	void IsFlying(bool isFlying);

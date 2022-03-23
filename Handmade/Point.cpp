@@ -1,8 +1,8 @@
 #include "Point.h"
 
 //======================================================================================================
-Point::Point(Object* parent, GLfloat pointSize, GLfloat r, GLfloat g, GLfloat b, GLfloat a)
-	: m_buffer("Point", 1), m_pointSize(pointSize)
+Point::Point(const std::string& tag, GLfloat pointSize, GLfloat r, GLfloat g, GLfloat b, GLfloat a)
+	: Object(tag), m_buffer(tag, 1), m_pointSize(pointSize)
 {
 	glm::vec3 vertex = glm::vec3(0.0f);
 	glm::vec4 color = glm::vec4(r, g, b, a);
@@ -13,7 +13,7 @@ Point::Point(Object* parent, GLfloat pointSize, GLfloat r, GLfloat g, GLfloat b,
 //======================================================================================================
 Point::~Point()
 {
-	m_buffer.Destroy("Point");
+	m_buffer.Destroy(m_tag);
 }
 //======================================================================================================
 void Point::SetColor(const glm::vec4& color)

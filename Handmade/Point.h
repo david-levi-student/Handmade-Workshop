@@ -12,7 +12,7 @@ class Point : public Object
 
 public:
 
-	Point(Object* parent, 
+	Point(const std::string& tag,
 		GLfloat pointSize = 5.0f,
 		GLfloat r = 1.0f, GLfloat g = 1.0f, GLfloat b = 1.0f, GLfloat a = 1.0f);
 	virtual ~Point();

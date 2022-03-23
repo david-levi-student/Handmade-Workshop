@@ -35,8 +35,7 @@ bool Model::Load(const std::string& tag,
 	std::vector<std::string> subStrings;
 	subStrings.reserve(10);
 
-	Model model;
-	model.m_tag = tag;
+	Model model(tag);
 
 	while (!file.eof())
 	{
@@ -259,11 +258,10 @@ bool Model::Load(const std::string& tag,
 	return true;
 }
 //======================================================================================================
-Model::Model(Object* parent,
-	const std::string& tag,
+Model::Model(const std::string& tag,
 	const std::string& filename,
 	bool isNormalized,
-	const std::string& defaultMaterial)
+	const std::string& defaultMaterial) : Object(tag)
 {
 	if (!filename.empty())
 	{

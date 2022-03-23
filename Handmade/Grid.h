@@ -7,7 +7,7 @@ class Grid : public Object
 
 public:
 
-	Grid(bool hasSpaceForAxes = false,
+	Grid(const std::string& tag, bool hasSpaceForAxes = false,
 		GLint size = 15, GLfloat lineWidth = 1.5f);
 	virtual ~Grid();
 

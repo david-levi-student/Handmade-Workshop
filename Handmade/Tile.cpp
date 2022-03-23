@@ -4,10 +4,10 @@
 #include "Tile.h"
 
 //======================================================================================================
-Tile::Tile(Object* parent, const std::string& filename,
+Tile::Tile(const std::string& tag, const std::string& filename,
 	GLfloat width, GLfloat height, GLuint spriteSheetCol, GLuint spriteSheetRow)
-	: m_spriteSheetCol(spriteSheetCol), m_spriteSheetRow(spriteSheetRow),
-	m_buffer("Tile", spriteSheetCol* spriteSheetRow * 6, true)
+	: Object(tag), m_spriteSheetCol(spriteSheetCol), m_spriteSheetRow(spriteSheetRow),
+	m_buffer(tag, spriteSheetCol* spriteSheetRow * 6, true)
 {
 	m_dimension = glm::vec2(width, height);
 
@@ -90,7 +90,7 @@ Tile::Tile(Object* parent, const std::string& filename,
 //======================================================================================================
 Tile::~Tile()
 {
-	m_buffer.Destroy("Tile");
+	m_buffer.Destroy(m_tag);
 }
 //======================================================================================================
 bool Tile::IsAnimationDead() const

@@ -2,10 +2,10 @@
 #include "Sphere.h"
 
 //======================================================================================================
-Sphere::Sphere(Object* parent, GLfloat radius, GLuint segments, GLuint slices,
+Sphere::Sphere(const std::string& tag, GLfloat radius, GLuint segments, GLuint slices,
 	GLfloat r, GLfloat g, GLfloat b, GLfloat a)
-	: m_slices(slices), m_radius(radius), m_segments(segments),
-	m_buffer("Sphere", segments* (slices - 1) * 6, true)
+	: Object(tag), m_slices(slices), m_radius(radius), m_segments(segments),
+	m_buffer(tag, segments* (slices - 1) * 6, true)
 {
 	m_color = glm::vec4(r, g, b, a);
 
@@ -77,7 +77,7 @@ Sphere::Sphere(Object* parent, GLfloat radius, GLuint segments, GLuint slices,
 //======================================================================================================
 Sphere::~Sphere()
 {
-	m_buffer.Destroy("Sphere");
+	m_buffer.Destroy(m_tag);
 }
 //======================================================================================================
 void Sphere::SetRadius(GLfloat radius)

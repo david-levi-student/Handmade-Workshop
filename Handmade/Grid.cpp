@@ -8,8 +8,8 @@
 //and add 4 for the two extra lines to close the grid
 //m_buffer("Grid", (size * 4 * 2) + 4) 
 //======================================================================================================
-Grid::Grid(bool hasSpaceForAxes, GLint size, GLfloat lineWidth)
-	: m_size(size), m_buffer("Grid", (size * 4 * 2) + 4), //TODO - Remove magic numbers
+Grid::Grid(const std::string& tag, bool hasSpaceForAxes, GLint size, GLfloat lineWidth)
+	: Object(tag), m_size(size), m_buffer(tag, (size * 4 * 2) + 4), //TODO - Remove magic numbers
 	m_lineWidth(lineWidth), m_hasSpaceForAxes(hasSpaceForAxes)  //QUADRANTS = 4
 {
 	Create();
@@ -17,7 +17,7 @@ Grid::Grid(bool hasSpaceForAxes, GLint size, GLfloat lineWidth)
 //======================================================================================================
 Grid::~Grid()
 {
-	m_buffer.Destroy("Grid");
+	m_buffer.Destroy(m_tag);
 }
 //======================================================================================================
 void Grid::SetSize(GLint size)

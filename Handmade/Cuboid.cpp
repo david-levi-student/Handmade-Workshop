@@ -2,9 +2,9 @@
 #include "Input.h"
 
 //======================================================================================================
-Cuboid::Cuboid(GLfloat width, GLfloat height, GLfloat depth,
+Cuboid::Cuboid(const std::string& tag, GLfloat width, GLfloat height, GLfloat depth,
 	GLfloat r, GLfloat g, GLfloat b, GLfloat a)
-	: m_buffer("Cuboid", 36, true)
+	: Object(tag), m_buffer(tag, 36, true)
 {
 	m_color = glm::vec4(r, g, b, a);
 	m_dimension = glm::vec3(width, height, depth);
@@ -119,7 +119,7 @@ Cuboid::Cuboid(GLfloat width, GLfloat height, GLfloat depth,
 //======================================================================================================
 Cuboid::~Cuboid()
 {
-	m_buffer.Destroy("Cuboid");
+	m_buffer.Destroy(m_tag);
 }
 //======================================================================================================
 void Cuboid::SetTextureScale(GLfloat width, GLfloat height)

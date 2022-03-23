@@ -3,7 +3,7 @@
 GLuint Light::s_totalLights = 0;
 
 //======================================================================================================
-Light::Light(GLfloat x, GLfloat y, GLfloat z) : m_buffer("Light", 1)
+Light::Light(const std::string& tag, GLfloat x, GLfloat y, GLfloat z) : Object(tag), m_buffer(tag, 1)
 {
 	m_transform.SetPosition(x, y, z);
 
@@ -19,7 +19,7 @@ Light::Light(GLfloat x, GLfloat y, GLfloat z) : m_buffer("Light", 1)
 //======================================================================================================
 Light::~Light()
 {
-	m_buffer.Destroy("Light");
+	m_buffer.Destroy(m_tag);
 	s_totalLights--;
 }
 //======================================================================================================
