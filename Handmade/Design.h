@@ -71,13 +71,10 @@ private:
 	std::unique_ptr<Audio> m_audio3;*/
 
 	std::unique_ptr<Light> m_light;
-	std::unique_ptr<Model> m_model;
-
+	
 	//Generic object (for testing)
-	std::unique_ptr<Object> m_object;
-
-	//std::unique_ptr<Cuboid> m_cube;
-	//std::unique_ptr<Sphere> m_sphere;
+	Object* m_activeObject;
+	std::vector<std::unique_ptr<Object>> m_objects;
 
 	//std::unique_ptr<Tile> m_labelX;
 	//std::unique_ptr<Tile> m_labelY;
@@ -91,6 +88,5 @@ private:
 	//==================================================================
 
 	std::deque<std::string> m_consoleLog;
-	std::vector<std::unique_ptr<Object>> m_objects;
 
 };

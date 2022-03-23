@@ -129,15 +129,27 @@ bool Design::OnEnter()
 
 	m_consoleLog.push_front("Audio sub-system initialized.");
 
-	//===================================================================
-
-	m_grid = std::make_unique<Grid>();
-	m_grid->GetTransform().SetRotation(45.0f, -30.0f, 0.0f);
-	m_consoleLog.push_front("Grid created.");
-
 	//=========================================================================
 
-	m_sceneCamera = std::make_unique<FreeCamera>();
+	ImGui::GetIO().Fonts->AddFontFromFileTTF("Assets/Fonts/Quikhand.ttf", FONT_SIZE);
+	ImGui::GetIO().Fonts->Build();
+
+	//WIP======================================================================
+	//Adding objects to the scene
+	//========================================================================= 
+
+	m_grid = std::make_unique<Grid>("World_grid");
+	m_grid->GetTransform().SetRotation(45.0f, -30.0f, 0.0f);
+
+	//m_object = std::make_unique<Cuboid>(m_grid.get());
+	m_objects.emplace_back(std::make_unique<Cuboid>("Cube_1"));
+	m_grid->AddChild(m_objects.back().get());
+	m_objects.emplace_back(std::make_unique<Cuboid>("Cube_2"));
+	m_grid->AddChild(m_objects.back().get());
+
+	m_activeObject = m_objects.back().get();
+
+	m_sceneCamera = std::make_unique<FreeCamera>("Main_cam");
 	m_sceneCamera->SetVelocity(0.0f);
 	m_sceneCamera->SetSensitivity(0.0f);
 	m_sceneCamera->GetTransform().SetPosition(0.0f, 0.0f, 50.0f);
@@ -145,17 +157,6 @@ bool Design::OnEnter()
 	m_consoleLog.push_front("Scene camera created.");
 
 	//=========================================================================
-
-	ImGui::GetIO().Fonts->AddFontFromFileTTF("Assets/Fonts/Quikhand.ttf", FONT_SIZE);
-	ImGui::GetIO().Fonts->Build();
-
-	//=========================================================================
-
-	//WIP======================================================================
-
-	//m_axes = std::make_unique<Axes>("Arrow.obj");
-
-	m_object = std::make_unique<Cuboid>(m_grid.get());
 
 	/*m_topText = std::make_unique<Text>("Quikhand", "Quikhand.ttf", 30);
 	m_topText->SetColor(1.0f, 0.0f, 0.196f, 1.0f);
@@ -200,7 +201,6 @@ bool Design::OnEnter()
 	//m_model->GetTransform().SetScale(5.0f, 5.0f, 5.0f);
 	//m_model->SetColor(1, 0, 1, 1);
 
-	//m_cube = std::make_unique<Cuboid>();
 	//m_sphere = std::make_unique<Sphere>(10.0f, 50.0f, 50.0f);
 
 	return true;
@@ -306,7 +306,11 @@ bool Design::Render()
 	//==============================================================================
 
 	m_grid->Render(mainShader);
-	m_object->Render(mainShader);
+
+	for (const auto& object : m_objects)
+	{
+		object->Render(mainShader);
+	}
 
 	/*lightShader.Use();
 	lightShader.SendData("cameraPosition", m_sceneCamera->GetTransform().GetPosition());
@@ -461,12 +465,18 @@ void Design::RenderHierarchyWindow()
 	ImGui::SetWindowPos("Hierarchy", windowPos);
 	ImGui::SetWindowSize("Hierarchy", windowSize);
 
+	//For extra help:
+	//https://github.com/ocornut/imgui/issues/324
+	
 	if (ImGui::TreeNode("Scene"))
 	{
-		if (ImGui::TreeNode("Cube"))
+		for (const auto& object : m_objects)
 		{
-			ImGui::TreePop();
-
+			if (ImGui::TreeNode(object->GetTag().c_str()))
+			{
+				m_activeObject = object.get();
+				ImGui::TreePop();
+			}
 		}
 
 		ImGui::TreePop();
@@ -500,34 +510,34 @@ void Design::RenderPropertiesWindow()
 
 	ImGui::Spacing();
 
-	auto position = m_object->GetTransform().GetPosition();
+	auto position = m_activeObject->GetTransform().GetPosition();
 	ImGui::SliderFloat3("Position", &position.x, -25.0f, 25.0f, "%.2f");
-	m_object->GetTransform().SetPosition(position);
+	m_activeObject->GetTransform().SetPosition(position);
 
 	//TODO - There is a tiny bug here with the sliders
-	auto rotation = m_object->GetTransform().GetEulerAngles();
+	auto rotation = m_activeObject->GetTransform().GetEulerAngles();
 	ImGui::SliderFloat3("Rotation", &rotation.x, -360.0f, 360.0f, "%.2f");
-	m_object->GetTransform().SetRotation(rotation);
+	m_activeObject->GetTransform().SetRotation(rotation);
 
-	auto scale = m_object->GetTransform().GetScale();
+	auto scale = m_activeObject->GetTransform().GetScale();
 
 	if (isUniformScale)
 	{
 		ImGui::SliderFloat("Scale", &scale.x, 0.01f, 30.0f, "%.2f");
-		m_object->GetTransform().SetScale(glm::vec3(scale.x));
+		m_activeObject->GetTransform().SetScale(glm::vec3(scale.x));
 	}
 
 	else
 	{
 		ImGui::SliderFloat3("Scale", &scale.x, 0.01f, 30.0f, "%.2f");
-		m_object->GetTransform().SetScale(scale);
+		m_activeObject->GetTransform().SetScale(scale);
 	}
 
 	ImGui::Spacing();
 
 	if (ImGui::Button("Reset", ImVec2(80, 25)))
 	{
-		m_object->GetTransform().SetIdentity();
+		m_activeObject->GetTransform().SetIdentity();
 	}
 
 	for (int i = 0; i < 5; i++)
@@ -538,9 +548,9 @@ void Design::RenderPropertiesWindow()
 	ImGui::TextColored({ 0.0f, 0.56f, 0.8f, 1.0f }, "Material");
 	ImGui::Separator();
 
-	auto color = m_object->GetColor();
+	auto color = m_activeObject->GetColor();
 	ImGui::ColorEdit4("Color", &color.r);
-	m_object->SetColor(color);
+	m_activeObject->SetColor(color);
 
 	ImGui::End();
 }
