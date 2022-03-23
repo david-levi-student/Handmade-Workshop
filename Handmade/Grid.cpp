@@ -9,7 +9,7 @@
 //m_buffer("Grid", (size * 4 * 2) + 4) 
 //======================================================================================================
 Grid::Grid(bool hasSpaceForAxes, GLint size, GLfloat lineWidth)
-	: Object(nullptr), m_size(size), m_buffer("Grid", (size * 4 * 2) + 4), //TODO - Remove magic numbers
+	: m_size(size), m_buffer("Grid", (size * 4 * 2) + 4), //TODO - Remove magic numbers
 	m_lineWidth(lineWidth), m_hasSpaceForAxes(hasSpaceForAxes)  //QUADRANTS = 4
 {
 	Create();

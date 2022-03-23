@@ -2,7 +2,7 @@
 
 //======================================================================================================
 Line::Line(Object* parent, GLfloat lineWidth, GLfloat r, GLfloat g, GLfloat b, GLfloat a)
-	: Object(parent), m_buffer("Line", 2), m_lineWidth(lineWidth)
+	: m_buffer("Line", 2), m_lineWidth(lineWidth)
 {
 	GLfloat colors[] = { r, g, b, a, r, g, b, a };
 	GLfloat vertices[] = { 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f };

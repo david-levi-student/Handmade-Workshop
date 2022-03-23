@@ -4,7 +4,7 @@
 //======================================================================================================
 Sphere::Sphere(Object* parent, GLfloat radius, GLuint segments, GLuint slices,
 	GLfloat r, GLfloat g, GLfloat b, GLfloat a)
-	: Object(parent), m_slices(slices), m_radius(radius), m_segments(segments),
+	: m_slices(slices), m_radius(radius), m_segments(segments),
 	m_buffer("Sphere", segments* (slices - 1) * 6, true)
 {
 	m_color = glm::vec4(r, g, b, a);

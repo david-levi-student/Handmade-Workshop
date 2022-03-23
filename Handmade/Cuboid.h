@@ -7,7 +7,7 @@ class Cuboid : public Object
 
 public:
 
-	Cuboid(Object* parent, GLfloat width = 1.0f, GLfloat height = 1.0f, GLfloat depth = 1.0f,
+	Cuboid(GLfloat width = 1.0f, GLfloat height = 1.0f, GLfloat depth = 1.0f,
 		GLfloat r = 0.5f, GLfloat g = 0.5f, GLfloat b = 0.5f, GLfloat a = 1.0f);
 	virtual ~Cuboid();
 

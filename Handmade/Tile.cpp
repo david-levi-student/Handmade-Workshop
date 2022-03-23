@@ -6,7 +6,7 @@
 //======================================================================================================
 Tile::Tile(Object* parent, const std::string& filename,
 	GLfloat width, GLfloat height, GLuint spriteSheetCol, GLuint spriteSheetRow)
-	: Object(parent), m_spriteSheetCol(spriteSheetCol), m_spriteSheetRow(spriteSheetRow),
+	: m_spriteSheetCol(spriteSheetCol), m_spriteSheetRow(spriteSheetRow),
 	m_buffer("Tile", spriteSheetCol* spriteSheetRow * 6, true)
 {
 	m_dimension = glm::vec2(width, height);

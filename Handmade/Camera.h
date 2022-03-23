@@ -17,7 +17,7 @@ public:
 		BottomLeft
 	};
 
-	Camera();
+	Camera() {}
 	virtual ~Camera() = 0 {}
 
 	const glm::ivec2 GetResolution() const;

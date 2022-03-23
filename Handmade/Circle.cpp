@@ -1,9 +1,9 @@
 #include "Circle.h"
 
 //======================================================================================================
-Circle::Circle(Object* parent, 
+Circle::Circle(Object* parent,
 	GLfloat radius, GLuint slices, GLfloat r, GLfloat g, GLfloat b, GLfloat a)
-	: Object(parent), m_slices(slices), m_radius(radius), m_buffer("Circle", slices + 1)
+	: m_slices(slices), m_radius(radius), m_buffer("Circle", slices + 1)
 {
 	m_color = glm::vec4(r, g, b, a);
 

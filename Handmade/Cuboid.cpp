@@ -2,9 +2,9 @@
 #include "Input.h"
 
 //======================================================================================================
-Cuboid::Cuboid(Object* parent, GLfloat width, GLfloat height, GLfloat depth,
+Cuboid::Cuboid(GLfloat width, GLfloat height, GLfloat depth,
 	GLfloat r, GLfloat g, GLfloat b, GLfloat a)
-	: Object(parent), m_buffer("Cuboid", 36, true)
+	: m_buffer("Cuboid", 36, true)
 {
 	m_color = glm::vec4(r, g, b, a);
 	m_dimension = glm::vec3(width, height, depth);
@@ -225,16 +225,24 @@ void Cuboid::Render(Shader& shader)
 
 	//Quick fix to allow child objects without parent objects (this avoids a crash)
 	//TODO - What we require here is a proper parent/child linkage of objects
+	glm::mat4 finalMatrix = glm::mat4(1.0f);
+	
 	if (m_parent)
 	{
-		shader.SendData("model", m_parent->GetTransform().GetMatrix() * m_transform.GetMatrix());
+		finalMatrix = m_parent->GetTransform().GetMatrix() * m_transform.GetMatrix();
 	}
 
 	else
 	{
-		shader.SendData("model", m_transform.GetMatrix());
+		finalMatrix = m_transform.GetMatrix();
 	}
 
+	/*for (const auto& child : m_children)
+	{
+		finalMatrix *= child->GetTransform().GetMatrix();
+	}*/
+
+	shader.SendData("model", finalMatrix);
 	shader.SendData("isTextured", static_cast<GLuint>(m_isTextured));
 
 	m_buffer.Render(Buffer::RenderMode::Triangles);

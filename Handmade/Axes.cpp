@@ -5,14 +5,14 @@
 
 GLuint Axes::s_totalObjects = 0;
 //======================================================================================================
-Axes::Axes(const std::string& filenameModel) : Object(nullptr)
+Axes::Axes(const std::string& filenameModel)
 {
 	m_model.Load("Axes", filenameModel, true);
 	m_model.SetModel("Axes");
 }
 //======================================================================================================
 Axes::Axes(GLint size, GLfloat lineWidth)
-	: Object(nullptr), m_size(size), m_lineWidth(lineWidth), m_isPrimitive(true), m_buffer("Axes", 6)
+	: m_size(size), m_lineWidth(lineWidth), m_isPrimitive(true), m_buffer("Axes", 6)
 {
 	Create();
 }

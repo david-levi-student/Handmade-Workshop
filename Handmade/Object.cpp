@@ -1,8 +1,7 @@
+#include <assert.h>
 #include "Object.h"
 #include "Shader.h"
 
-//======================================================================================================
-Object::Object(Object* parent) : m_parent(parent) {}
 //======================================================================================================
 bool Object::IsLit() const
 {
@@ -84,8 +83,9 @@ void Object::SetTag(const std::string& tag)
 	m_tag = tag;
 }
 //======================================================================================================
-void Object::AddChild(const Object* child)
+void Object::AddChild(Object* child)
 {
-	//m_children.push_back(std::make_unique<Object>(child));
-	//m_children.back()->m_parent = this;
+	assert(child->m_parent == nullptr);
+	m_children.emplace_back(child);
+	m_children.back()->m_parent = this;
 }

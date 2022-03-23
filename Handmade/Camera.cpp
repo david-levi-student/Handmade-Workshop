@@ -5,8 +5,6 @@
 #include "Shader.h"
 
 //======================================================================================================
-Camera::Camera() : Object(nullptr) {}
-//======================================================================================================
 const glm::ivec2 Camera::GetResolution() const
 {
 	return m_resolution;
@@ -22,19 +20,19 @@ glm::vec2 Camera::ConvertWorldToScreen(const glm::vec3& worldPosition)
 
 	//convert to screen space
 	return glm::vec2((clipCoordinate.x + 1.0f) * m_resolution.x * 0.5f,
-					 (clipCoordinate.y + 1.0f) * m_resolution.y * 0.5f);
+		(clipCoordinate.y + 1.0f) * m_resolution.y * 0.5f);
 }
 //======================================================================================================
 glm::vec3 Camera::ConvertScreenToWorld(const glm::vec2& screenPosition, GLfloat zNDC)
 {
 	//convert to NDC
-	glm::vec4 NDC((2.0f * screenPosition.x) / m_resolution.x - 1.0f, 
-		          (2.0f * (m_resolution.y - screenPosition.y)) / m_resolution.y - 1.0f,
-		          zNDC, 1.0f);
+	glm::vec4 NDC((2.0f * screenPosition.x) / m_resolution.x - 1.0f,
+		(2.0f * (m_resolution.y - screenPosition.y)) / m_resolution.y - 1.0f,
+		zNDC, 1.0f);
 
 	//convert to world space (4D)
 	glm::vec4 worldCoordinate = glm::inverse(m_viewMatrix) * glm::inverse(m_projectionMatrix) * NDC;
-	
+
 	//convert to world space (3D)
 	return (worldCoordinate /= worldCoordinate.w);
 }
@@ -94,13 +92,13 @@ void Camera::CreateOrthoView(Origin2D origin)
 	if (origin == Origin2D::TopLeft)
 	{
 		m_projectionMatrix = glm::ortho(0.0f, static_cast<GLfloat>(m_resolution.x),
-											  static_cast<GLfloat>(m_resolution.y), 0.0f);
+			static_cast<GLfloat>(m_resolution.y), 0.0f);
 	}
 
 	else if (origin == Origin2D::BottomLeft)
 	{
 		m_projectionMatrix = glm::ortho(0.0f, static_cast<GLfloat>(m_resolution.x),
-									    0.0f, static_cast<GLfloat>(m_resolution.y));
+			0.0f, static_cast<GLfloat>(m_resolution.y));
 	}
 }
 //======================================================================================================
@@ -112,7 +110,7 @@ void Camera::CreatePerspView()
 
 	GLfloat aspectRatio = (m_resolution.x) / static_cast<GLfloat>(m_resolution.y);
 
-	m_projectionMatrix = glm::perspective(glm::radians(m_fieldOfView), 
+	m_projectionMatrix = glm::perspective(glm::radians(m_fieldOfView),
 		aspectRatio, NEAR_CLIP, FAR_CLIP);
 }
 //======================================================================================================

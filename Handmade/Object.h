@@ -1,7 +1,6 @@
 #pragma once
 #include "GLAD/gl.h"
 #include <glm.hpp>
-#include <memory>
 #include <string>
 #include <vector>
 #include "Shader.h"
@@ -12,7 +11,7 @@ class Object
 
 public:
 
-	Object(Object* parent);
+	Object() {}
 	virtual ~Object() = 0 {}
 
 	bool IsLit() const;
@@ -36,7 +35,7 @@ public:
 	void SetPriority(GLuint priority);
 	void SetTag(const std::string& tag);
 
-	void AddChild(const Object* child);
+	void AddChild(Object* child);
 
 	virtual void SetColor(const glm::vec4& color) {}
 	virtual void SetColor(GLfloat r, GLfloat g, GLfloat b, GLfloat a) {}
@@ -60,7 +59,7 @@ protected:
 	std::string m_tag;
 	Transform m_transform;
 
-	Object* m_parent;
-	//std::vector<std::unique_ptr<Object>> m_children;
+	Object* m_parent{ nullptr };
+	std::vector<Object*> m_children;
 
 };

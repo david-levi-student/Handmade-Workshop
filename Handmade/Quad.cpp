@@ -3,7 +3,7 @@
 
 //======================================================================================================
 Quad::Quad(Object* parent, GLfloat width, GLfloat height, GLfloat r, GLfloat g, GLfloat b, GLfloat a)
-	: Object(parent), m_buffer("Quad", 6, true)
+	: m_buffer("Quad", 6, true)
 {
 	m_color = glm::vec4(r, g, b, a);
 	m_dimension = glm::vec2(width, height);
