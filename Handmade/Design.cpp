@@ -284,15 +284,15 @@ bool Design::Render()
 
 	//Hierarchy viewport
 	SetViewport(glm::ivec4(0, m_minorHeight, m_minorWidth, m_resolution.y - m_minorHeight),
-		glm::uvec4(255U, 200U, 0U, 1U));
+		glm::uvec4(0U, 144U, 255U, 1U));
 
 	//Console viewport
 	SetViewport(glm::ivec4(0, 0, m_majorWidth, m_minorHeight),
-		glm::uvec4(255U, 200U, 0U, 1U));
+		glm::uvec4(0U, 144U, 255U, 1U));
 
 	//Properties viewport
 	SetViewport(glm::ivec4(m_majorWidth, 0, m_minorWidth, m_resolution.y),
-		glm::uvec4(255U, 200U, 0U, 1U));
+		glm::uvec4(0U, 144U, 255U, 1U));
 
 	//Scene viewport
 	m_sceneCamera->SetViewport(m_minorWidth, m_minorHeight, m_resolution.x - (m_minorWidth * 2), m_majorHeight);
