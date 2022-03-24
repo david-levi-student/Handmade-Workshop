@@ -27,6 +27,9 @@ glm::vec2 Camera::ConvertWorldToScreen(const glm::vec3& worldPosition)
 //======================================================================================================
 glm::vec3 Camera::ConvertScreenToWorld(const glm::vec2& screenPosition, GLfloat zNDC)
 {
+	//TODO - Consider using 'glm::unProject()'
+	//TODO - Replace 'm_resolution' with 'm_viewport'
+
 	//convert to NDC
 	glm::vec4 NDC((2.0f * screenPosition.x) / m_resolution.x - 1.0f,
 		(2.0f * (m_resolution.y - screenPosition.y)) / m_resolution.y - 1.0f,
