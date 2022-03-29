@@ -73,7 +73,7 @@ private:
 	std::unique_ptr<Light> m_light;
 	
 	//Generic object (for testing)
-	Object* m_activeObject;
+	Object* m_activeObject{ nullptr };
 	std::vector<std::unique_ptr<Object>> m_objects;
 
 	//std::unique_ptr<Tile> m_labelX;
