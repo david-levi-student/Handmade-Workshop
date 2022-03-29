@@ -61,7 +61,7 @@ void Grid::Render(Shader& shader)
 		Buffer::VBO::ColorBuffer, Buffer::ComponentSize::RGBA, Buffer::DataType::FloatData);
 
 	shader.SendData("isTextured", false);
-	shader.SendData("model", m_transform.GetMatrix());
+	shader.SendData("model", GetFinalMatrix());
 
 	m_buffer.Render(Buffer::RenderMode::Lines);
 }

@@ -93,12 +93,12 @@ void Object::AddChild(Object* child)
 	m_children.back()->m_parent = this;
 }
 //======================================================================================================
-void Object::Render(Shader& shader)
+glm::mat4 Object::GetFinalMatrix()
 {
 	std::deque<glm::mat4> matrices;
 	matrices.emplace_front(m_transform.GetMatrix());
 
-	Object* parent = m_parent;
+	auto parent = m_parent;
 
 	while (parent)
 	{
@@ -106,10 +106,12 @@ void Object::Render(Shader& shader)
 		parent = parent->m_parent;
 	}
 
-	m_finalMatrix = glm::mat4(1.0f);
+	auto finalMatrix = glm::mat4(1.0f);
 
 	for (auto& matrix : matrices)
 	{
-		m_finalMatrix *= matrix;
+		finalMatrix *= matrix;
 	}
+
+	return finalMatrix;
 }

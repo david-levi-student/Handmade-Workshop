@@ -223,9 +223,7 @@ void Cuboid::Render(Shader& shader)
 
 	//shader.SendData("normal", m_normalMatrix);
 
-	Object::Render(shader);
-
-	shader.SendData("model", m_finalMatrix);
+	shader.SendData("model", GetFinalMatrix());
 	shader.SendData("isTextured", static_cast<GLuint>(m_isTextured));
 
 	m_buffer.Render(Buffer::RenderMode::Triangles);
