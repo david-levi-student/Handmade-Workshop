@@ -1,12 +1,13 @@
-#include "Design.h"
-#include "Input.h"
-#include "Screen.h"
+#include <functional>
 
 #include "imgui/imgui.h"
 #include "imgui/imgui_impl_opengl3.h"
 #include "imgui/imgui_impl_sdl.h"
 
 #include "BoxCollider.h"
+#include "Design.h"
+#include "Input.h"
+#include "Screen.h"
 #include "Utility.h"
 
 //======================================================================================================
@@ -138,7 +139,7 @@ bool Design::OnEnter()
 	//Adding objects to the scene
 	//========================================================================= 
 
-	m_grid = std::make_unique<Grid>("World_grid");
+	m_grid = std::make_unique<Grid>("Scene");
 	m_grid->GetTransform().SetRotation(45.0f, -30.0f, 0.0f);
 
 	//m_object = std::make_unique<Cuboid>(m_grid.get());
@@ -472,15 +473,32 @@ void Design::RenderHierarchyWindow()
 	//For extra help:
 	//https://github.com/ocornut/imgui/issues/324
 
-	if (ImGui::TreeNode("Scene"))
+	//For each child's child we use a recursive lambda to render the
+	//name of the object. Each call to 'TreeNode' will add an indented 
+	//label of the child and this runs until there are no more children
+	std::function<void(Object*)> OpenTree = [&](Object* child)
 	{
-		for (const auto& object : m_objects)
+		if (ImGui::TreeNode(child->GetTag().c_str()))
 		{
-			if (ImGui::TreeNode(object->GetTag().c_str()))
+			m_activeObject = child;
+
+			for (const auto& child : child->GetChildren())
 			{
-				m_activeObject = object.get();
-				ImGui::TreePop();
+				OpenTree(child);
 			}
+
+			ImGui::TreePop();
+		}
+
+		return;
+	};
+
+	//Click on 'Scene' and open up all of the grid's children
+	if (ImGui::TreeNode(m_grid->GetTag().c_str()))
+	{
+		for (const auto& child : m_grid->GetChildren())
+		{
+			OpenTree(child);
 		}
 
 		ImGui::TreePop();

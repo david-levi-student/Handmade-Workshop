@@ -71,6 +71,11 @@ const glm::vec4& Object::GetColor() const
 	return m_color;
 }
 //======================================================================================================
+const std::vector<Object*>& Object::GetChildren() const
+{
+	return m_children;
+}
+//======================================================================================================
 Transform& Object::GetTransform()
 {
 	return m_transform;

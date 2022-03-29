@@ -29,6 +29,7 @@ public:
 	GLuint GetPriority() const;
 	const std::string& GetTag() const;
 	const glm::vec4& GetColor() const;
+	const std::vector<Object*>& GetChildren() const;
 
 	Transform& GetTransform();
 
