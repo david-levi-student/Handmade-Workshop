@@ -144,7 +144,7 @@ bool Design::OnEnter()
 	//m_object = std::make_unique<Cuboid>(m_grid.get());
 	m_objects.emplace_back(std::make_unique<Cuboid>("Cube_1"));
 	m_grid->AddChild(m_objects.back().get());
-	
+
 	auto back = m_objects.back().get();
 	m_objects.emplace_back(std::make_unique<Cuboid>("Cube_2"));
 	back->AddChild(m_objects.back().get());
@@ -219,17 +219,10 @@ State* Design::Update(int deltaTime)
 
 	//==============================================================================
 
-	auto camPos = m_sceneCamera->GetTransform().GetPosition();
-	camPos.z -= (Input::Instance()->GetMouseWheel().y);
-	m_sceneCamera->GetTransform().SetPosition(camPos);
-
-	auto mouseMotion = Input::Instance()->GetMouseMotion();
-
-	//Screen/Mouse collider code - notr yet working properly==========================
 	BoxCollider sceneBox;
 	auto dimension = m_sceneCamera->GetResolution();
 
-	sceneBox.SetPosition(dimension.x * 0.5f, dimension.y * 0.5f, 0.0f);
+	sceneBox.SetPosition(m_minorWidth + (dimension.x * 0.5f), dimension.y * 0.5f, 0.0f);
 	sceneBox.SetDimension(static_cast<GLfloat>(dimension.x), static_cast<GLfloat>(dimension.y), 0.0f);
 	sceneBox.Update();
 
@@ -241,13 +234,22 @@ State* Design::Update(int deltaTime)
 
 	//================================================================================
 
-	if (Input::Instance()->IsLeftButtonClicked() && sceneBox.IsColliding(mouseBox))
+	if (sceneBox.IsColliding(mouseBox))
 	{
-		m_sceneRotation.x += -mouseMotion.y;
-		m_sceneRotation.y += mouseMotion.x;
-	}
+		//Zoom
+		auto camPos = m_sceneCamera->GetTransform().GetPosition();
+		camPos.z -= (Input::Instance()->GetMouseWheel().y);
+		m_sceneCamera->GetTransform().SetPosition(camPos);
 
-	m_grid->GetTransform().SetRotation(m_sceneRotation);
+		//Rotate grid
+		if (Input::Instance()->IsLeftButtonClicked())
+		{
+			auto mouseMotion = Input::Instance()->GetMouseMotion();
+			m_sceneRotation.x += -mouseMotion.y;
+			m_sceneRotation.y += mouseMotion.x;
+			m_grid->GetTransform().SetRotation(m_sceneRotation);
+		}
+	}
 
 	//==============================================================================
 
@@ -469,7 +471,7 @@ void Design::RenderHierarchyWindow()
 
 	//For extra help:
 	//https://github.com/ocornut/imgui/issues/324
-	
+
 	if (ImGui::TreeNode("Scene"))
 	{
 		for (const auto& object : m_objects)
