@@ -144,8 +144,10 @@ bool Design::OnEnter()
 	//m_object = std::make_unique<Cuboid>(m_grid.get());
 	m_objects.emplace_back(std::make_unique<Cuboid>("Cube_1"));
 	m_grid->AddChild(m_objects.back().get());
+	
+	auto back = m_objects.back().get();
 	m_objects.emplace_back(std::make_unique<Cuboid>("Cube_2"));
-	m_grid->AddChild(m_objects.back().get());
+	back->AddChild(m_objects.back().get());
 
 	m_activeObject = m_objects.back().get();
 

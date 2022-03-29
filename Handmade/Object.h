@@ -40,7 +40,7 @@ public:
 	virtual void SetColor(const glm::vec4& color) {}
 	virtual void SetColor(GLfloat r, GLfloat g, GLfloat b, GLfloat a) {}
 
-	virtual void Render(Shader& shader) = 0;
+	virtual void Render(Shader& shader);
 	virtual void Update(GLfloat deltaTime) = 0;
 	virtual void SendToShader(Shader& shader) = 0;
 
@@ -54,6 +54,7 @@ protected:
 
 	GLuint m_priority{ 0 };
 	glm::vec4 m_color{ 1.0f };
+	glm::mat4 m_finalMatrix{ 1.0f };
 	glm::mat3 m_normalMatrix{ 1.0f };
 
 	std::string m_tag;

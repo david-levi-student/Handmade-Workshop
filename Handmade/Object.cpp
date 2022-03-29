@@ -1,4 +1,5 @@
 #include <assert.h>
+#include <deque>
 #include "Object.h"
 #include "Shader.h"
 
@@ -90,4 +91,25 @@ void Object::AddChild(Object* child)
 	assert(child->m_parent == nullptr);
 	m_children.emplace_back(child);
 	m_children.back()->m_parent = this;
+}
+//======================================================================================================
+void Object::Render(Shader& shader)
+{
+	std::deque<glm::mat4> matrices;
+	matrices.emplace_front(m_transform.GetMatrix());
+
+	Object* parent = m_parent;
+
+	while (parent)
+	{
+		matrices.emplace_front(parent->GetTransform().GetMatrix());
+		parent = parent->m_parent;
+	}
+
+	m_finalMatrix = glm::mat4(1.0f);
+
+	for (auto& matrix : matrices)
+	{
+		m_finalMatrix *= matrix;
+	}
 }
