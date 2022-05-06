@@ -642,6 +642,14 @@ void Design::RenderPropertiesWindow()
 
 	if (m_activeObject)
 	{
+		ImGui::TextColored({ 0.0f, 0.56f, 0.8f, 1.0f }, m_activeObject->GetTag().c_str());
+		ImGui::Separator();
+
+		for (int i = 0; i < 5; i++)
+		{
+			ImGui::Spacing();
+		}
+
 		ImGui::TextColored({ 0.0f, 0.56f, 0.8f, 1.0f }, "Transform");
 		ImGui::Separator();
 
