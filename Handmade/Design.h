@@ -49,6 +49,8 @@ private:
 	GLint m_majorWidth{ 0 };
 	GLint m_minorHeight{ 0 };
 	GLint m_majorHeight{ 0 };
+	
+	bool m_isStateComplete{ false };
 
 	glm::ivec2 m_resolution{ 0U };
 	glm::vec3 m_sceneRotation{ 45.0f, -30.0f, 0.0f };

@@ -213,7 +213,7 @@ State* Design::Update(int deltaTime)
 {
 	Audio::Update();
 
-	if (Input::Instance()->IsXClicked())
+	if (Input::Instance()->IsXClicked() || m_isStateComplete)
 	{
 		return nullptr;
 	}
@@ -437,41 +437,114 @@ void Design::RenderMenu()
 		//the menu titles will not render correctly
 		if (ImGui::BeginMenu("Scene"))
 		{
-			ImGui::MenuItem("New", nullptr, nullptr);
-			ImGui::MenuItem("Load...", nullptr, nullptr);
-			ImGui::MenuItem("Save", nullptr, nullptr);
-			ImGui::MenuItem("Save As...", nullptr, nullptr);
-			ImGui::MenuItem("Reset", nullptr, nullptr);
+			if (ImGui::MenuItem("New", nullptr, nullptr))
+			{
+				//Handle menu item...
+			}
+
+			if (ImGui::MenuItem("Load...", nullptr, nullptr))
+			{
+				//Handle menu item...
+			}
+
+			if (ImGui::MenuItem("Save", nullptr, nullptr))
+			{
+				//Handle menu item...
+			}
+
+			if (ImGui::MenuItem("Save As...", nullptr, nullptr))
+			{
+				//Handle menu item...
+			}
+
+			if (ImGui::MenuItem("Reset", nullptr, nullptr))
+			{
+				//Handle menu item...
+			}
+
 			ImGui::Separator();
-			ImGui::MenuItem("Exit", nullptr, nullptr);
+			
+			if (ImGui::MenuItem("Exit", nullptr, nullptr))
+			{
+				m_isStateComplete = true;
+			}
+
 			ImGui::EndMenu();
 		}
 
 		if (ImGui::BeginMenu("Objects"))
 		{
-			ImGui::MenuItem("Quad", nullptr, nullptr);
-			ImGui::MenuItem("Circle", nullptr, nullptr);
-			ImGui::MenuItem("Cuboid", nullptr, nullptr);
-			ImGui::MenuItem("Sphere", nullptr, nullptr);
+			if (ImGui::MenuItem("Quad", nullptr, nullptr))
+			{
+				//Handle menu item...
+			}
+
+			if (ImGui::MenuItem("Circle", nullptr, nullptr))
+			{
+				//Handle menu item...
+			}
+			if (ImGui::MenuItem("Cuboid", nullptr, nullptr))
+			{
+				//Handle menu item...
+			}
+
+			if (ImGui::MenuItem("Sphere", nullptr, nullptr))
+			{
+				//Handle menu item...
+			}
+
 			ImGui::Separator();
-			ImGui::MenuItem("Text", nullptr, nullptr);
-			ImGui::MenuItem("Tile", nullptr, nullptr);
-			ImGui::MenuItem("Light", nullptr, nullptr);
+			
+			if (ImGui::MenuItem("Text", nullptr, nullptr))
+			{
+				//Handle menu item...
+			}
+
+			if (ImGui::MenuItem("Tile", nullptr, nullptr))
+			{
+				//Handle menu item...
+			}
+
+			if (ImGui::MenuItem("Light", nullptr, nullptr))
+			{
+				//Handle menu item...
+			}
+
 			ImGui::EndMenu();
 		}
 
 		if (ImGui::BeginMenu("Custom"))
 		{
-			ImGui::MenuItem("Model...", nullptr, nullptr);
-			ImGui::MenuItem("Shader...", nullptr, nullptr);
-			ImGui::MenuItem("Audio...", nullptr, nullptr);
+			if (ImGui::MenuItem("Model...", nullptr, nullptr))
+			{
+				//Handle menu item...
+			}
+
+			if (ImGui::MenuItem("Shader...", nullptr, nullptr))
+			{
+				//Handle menu item...
+			}
+
+			if (ImGui::MenuItem("Audio...", nullptr, nullptr))
+			{
+				//Handle menu item...
+			}
+
 			ImGui::EndMenu();
 		}
 
 		if (ImGui::BeginMenu("Help"))
 		{
-			ImGui::MenuItem("Tutorial", nullptr, nullptr);
-			ImGui::MenuItem("About...", nullptr, nullptr);
+			if (ImGui::MenuItem("Tutorial", nullptr, nullptr))
+			{
+				//Handle menu item...
+			}
+
+			if (ImGui::MenuItem("About...", nullptr, nullptr))
+			{
+				//Handle menu item...
+			}
+
 			ImGui::EndMenu();
 		}
 
