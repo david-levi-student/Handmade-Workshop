@@ -475,7 +475,8 @@ void Design::RenderMenu()
 			}
 			if (ImGui::MenuItem("Cuboid", nullptr, nullptr))
 			{
-				//Handle menu item...
+				m_objects.emplace_back(std::make_unique<Cuboid>("Cube_" + std::to_string(Cuboid::GetTotalCuboids() + 1)));
+				m_grid->AddChild(m_objects.back().get());
 			}
 
 			if (ImGui::MenuItem("Sphere", nullptr, nullptr))

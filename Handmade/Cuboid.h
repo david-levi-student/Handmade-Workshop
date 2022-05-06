@@ -7,6 +7,8 @@ class Cuboid : public Object
 
 public:
 
+	static int GetTotalCuboids();
+
 	Cuboid(const std::string& tag, GLfloat width = 1.0f, GLfloat height = 1.0f, GLfloat depth = 1.0f,
 		GLfloat r = 0.5f, GLfloat g = 0.5f, GLfloat b = 0.5f, GLfloat a = 1.0f);
 	virtual ~Cuboid();
@@ -24,6 +26,8 @@ public:
 	virtual void SendToShader(Shader& shader) {}
 
 private:
+
+	static int s_totalCuboids;
 
 	Buffer m_buffer;
 	glm::vec3 m_dimension;

@@ -1,11 +1,18 @@
 #include "Cuboid.h"
 #include "Input.h"
 
+int Cuboid::s_totalCuboids = 0;
+//======================================================================================================
+int Cuboid::GetTotalCuboids()
+{
+	return s_totalCuboids;
+}
 //======================================================================================================
 Cuboid::Cuboid(const std::string& tag, GLfloat width, GLfloat height, GLfloat depth,
 	GLfloat r, GLfloat g, GLfloat b, GLfloat a)
 	: Object(tag), m_buffer(tag, 36, true)
 {
+	s_totalCuboids++;
 	m_color = glm::vec4(r, g, b, a);
 	m_dimension = glm::vec3(width, height, depth);
 
@@ -120,6 +127,7 @@ Cuboid::Cuboid(const std::string& tag, GLfloat width, GLfloat height, GLfloat de
 Cuboid::~Cuboid()
 {
 	m_buffer.Destroy(m_tag);
+	s_totalCuboids--;
 }
 //======================================================================================================
 void Cuboid::SetTextureScale(GLfloat width, GLfloat height)
