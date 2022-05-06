@@ -139,18 +139,18 @@ bool Design::OnEnter()
 	//Adding objects to the scene
 	//========================================================================= 
 
-	m_grid = std::make_unique<Grid>("Scene");
+	m_grid = std::make_unique<Grid>("Scene (Empty)");
 	m_grid->GetTransform().SetRotation(45.0f, -30.0f, 0.0f);
 
 	//m_object = std::make_unique<Cuboid>(m_grid.get());
-	m_objects.emplace_back(std::make_unique<Cuboid>("Cube_1"));
-	m_grid->AddChild(m_objects.back().get());
+	//m_objects.emplace_back(std::make_unique<Cuboid>("Cube_1"));
+	//m_grid->AddChild(m_objects.back().get());
 
-	auto back = m_objects.back().get();
-	m_objects.emplace_back(std::make_unique<Cuboid>("Cube_2"));
-	back->AddChild(m_objects.back().get());
+	//auto back = m_objects.back().get();
+	//m_objects.emplace_back(std::make_unique<Cuboid>("Cube_2"));
+	//back->AddChild(m_objects.back().get());
 
-	m_activeObject = m_objects.back().get();
+	//m_activeObject = m_objects.back().get();
 
 	m_sceneCamera = std::make_unique<FreeCamera>("Main_cam");
 	m_sceneCamera->SetVelocity(0.0f);
@@ -463,7 +463,7 @@ void Design::RenderMenu()
 			}
 
 			ImGui::Separator();
-			
+
 			if (ImGui::MenuItem("Exit", nullptr, nullptr))
 			{
 				m_isStateComplete = true;
@@ -494,7 +494,7 @@ void Design::RenderMenu()
 			}
 
 			ImGui::Separator();
-			
+
 			if (ImGui::MenuItem("Text", nullptr, nullptr))
 			{
 				//Handle menu item...
@@ -648,58 +648,66 @@ void Design::RenderPropertiesWindow()
 	ImGui::SetWindowPos("Properties", windowPos);
 	ImGui::SetWindowSize("Properties", windowSize);
 
-	ImGui::TextColored({ 0.0f, 0.56f, 0.8f, 1.0f }, "Transform");
-	ImGui::Separator();
-
-	static auto isGlobal = false;
-	ImGui::Checkbox("Global", &isGlobal);
-
-	static auto isUniformScale = false;
-	ImGui::Checkbox("Uniform scale", &isUniformScale);
-
-	ImGui::Spacing();
-
-	auto position = m_activeObject->GetTransform().GetPosition();
-	ImGui::SliderFloat3("Position", &position.x, -25.0f, 25.0f, "%.2f");
-	m_activeObject->GetTransform().SetPosition(position);
-
-	//TODO - There is a tiny bug here with the sliders
-	auto rotation = m_activeObject->GetTransform().GetEulerAngles();
-	ImGui::SliderFloat3("Rotation", &rotation.x, -360.0f, 360.0f, "%.2f");
-	m_activeObject->GetTransform().SetRotation(rotation);
-
-	auto scale = m_activeObject->GetTransform().GetScale();
-
-	if (isUniformScale)
+	if (m_activeObject)
 	{
-		ImGui::SliderFloat("Scale", &scale.x, 0.01f, 30.0f, "%.2f");
-		m_activeObject->GetTransform().SetScale(glm::vec3(scale.x));
+		ImGui::TextColored({ 0.0f, 0.56f, 0.8f, 1.0f }, "Transform");
+		ImGui::Separator();
+
+		static auto isGlobal = false;
+		ImGui::Checkbox("Global", &isGlobal);
+
+		static auto isUniformScale = false;
+		ImGui::Checkbox("Uniform scale", &isUniformScale);
+
+		ImGui::Spacing();
+
+		auto position = m_activeObject->GetTransform().GetPosition();
+		ImGui::SliderFloat3("Position", &position.x, -25.0f, 25.0f, "%.2f");
+		m_activeObject->GetTransform().SetPosition(position);
+
+		//TODO - There is a tiny bug here with the sliders
+		auto rotation = m_activeObject->GetTransform().GetEulerAngles();
+		ImGui::SliderFloat3("Rotation", &rotation.x, -360.0f, 360.0f, "%.2f");
+		m_activeObject->GetTransform().SetRotation(rotation);
+
+		auto scale = m_activeObject->GetTransform().GetScale();
+
+		if (isUniformScale)
+		{
+			ImGui::SliderFloat("Scale", &scale.x, 0.01f, 30.0f, "%.2f");
+			m_activeObject->GetTransform().SetScale(glm::vec3(scale.x));
+		}
+
+		else
+		{
+			ImGui::SliderFloat3("Scale", &scale.x, 0.01f, 30.0f, "%.2f");
+			m_activeObject->GetTransform().SetScale(scale);
+		}
+
+		ImGui::Spacing();
+
+		if (ImGui::Button("Reset", ImVec2(80, 25)))
+		{
+			m_activeObject->GetTransform().SetIdentity();
+		}
+
+		for (int i = 0; i < 5; i++)
+		{
+			ImGui::Spacing();
+		}
+
+		ImGui::TextColored({ 0.0f, 0.56f, 0.8f, 1.0f }, "Material");
+		ImGui::Separator();
+
+		auto color = m_activeObject->GetColor();
+		ImGui::ColorEdit4("Color", &color.r);
+		m_activeObject->SetColor(color);
 	}
 
 	else
 	{
-		ImGui::SliderFloat3("Scale", &scale.x, 0.01f, 30.0f, "%.2f");
-		m_activeObject->GetTransform().SetScale(scale);
+		ImGui::Text("No object selected");
 	}
-
-	ImGui::Spacing();
-
-	if (ImGui::Button("Reset", ImVec2(80, 25)))
-	{
-		m_activeObject->GetTransform().SetIdentity();
-	}
-
-	for (int i = 0; i < 5; i++)
-	{
-		ImGui::Spacing();
-	}
-
-	ImGui::TextColored({ 0.0f, 0.56f, 0.8f, 1.0f }, "Material");
-	ImGui::Separator();
-
-	auto color = m_activeObject->GetColor();
-	ImGui::ColorEdit4("Color", &color.r);
-	m_activeObject->SetColor(color);
 
 	ImGui::End();
 }
