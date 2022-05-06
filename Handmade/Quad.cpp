@@ -1,10 +1,17 @@
 #include "Input.h"
 #include "Quad.h"
 
+int Quad::s_totalQuads = 0;
+//======================================================================================================
+int Quad::GetTotalQuads()
+{
+	return s_totalQuads;
+}
 //======================================================================================================
 Quad::Quad(const std::string& tag, GLfloat width, GLfloat height, GLfloat r, GLfloat g, GLfloat b, GLfloat a)
 	: Object(tag), m_buffer(tag, 6, true)
 {
+	s_totalQuads++;
 	m_color = glm::vec4(r, g, b, a);
 	m_dimension = glm::vec2(width, height);
 
@@ -47,6 +54,7 @@ Quad::Quad(const std::string& tag, GLfloat width, GLfloat height, GLfloat r, GLf
 Quad::~Quad()
 {
 	m_buffer.Destroy("Quad");
+	s_totalQuads--;
 }
 //======================================================================================================
 void Quad::SetDimension(const glm::vec2& dimension)

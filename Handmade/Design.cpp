@@ -466,7 +466,8 @@ void Design::RenderMenu()
 		{
 			if (ImGui::MenuItem("Quad", nullptr, nullptr))
 			{
-				//Handle menu item...
+				m_objects.emplace_back(std::make_unique<Quad>("Quad_" + std::to_string(Quad::GetTotalQuads() + 1)));
+				m_grid->AddChild(m_objects.back().get());
 			}
 
 			if (ImGui::MenuItem("Circle", nullptr, nullptr))
