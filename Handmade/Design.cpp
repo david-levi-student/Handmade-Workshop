@@ -484,7 +484,8 @@ void Design::RenderMenu()
 
 			if (ImGui::MenuItem("Sphere", nullptr, nullptr))
 			{
-				//Handle menu item...
+				m_objects.emplace_back(std::make_unique<Sphere>("Sphere_" + std::to_string(Sphere::GetTotalSpheres() + 1)));
+				m_grid->AddChild(m_objects.back().get());
 			}
 
 			ImGui::Separator();

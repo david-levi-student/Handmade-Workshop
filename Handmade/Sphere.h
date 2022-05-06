@@ -9,6 +9,8 @@ class Sphere : public Object
 
 public:
 
+	static int GetTotalSpheres();
+
 	Sphere(const std::string& tag, GLfloat radius = 1.0f, GLuint segments = 25, GLuint slices = 25,
 		GLfloat r = 0.5f, GLfloat g = 0.5f, GLfloat b = 0.5f, GLfloat a = 1.0f);
 	virtual ~Sphere();
@@ -23,6 +25,8 @@ public:
 	virtual void SendToShader(Shader& shader) {}
 
 private:
+
+	static int s_totalSpheres;
 
 	Buffer m_buffer;
 	GLuint m_slices;

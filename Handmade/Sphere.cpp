@@ -1,12 +1,19 @@
 #include "Shader.h"
 #include "Sphere.h"
 
+int Sphere::s_totalSpheres = 0;
+//======================================================================================================
+int Sphere::GetTotalSpheres()
+{
+	return s_totalSpheres;
+}
 //======================================================================================================
 Sphere::Sphere(const std::string& tag, GLfloat radius, GLuint segments, GLuint slices,
 	GLfloat r, GLfloat g, GLfloat b, GLfloat a)
 	: Object(tag), m_slices(slices), m_radius(radius), m_segments(segments),
 	m_buffer(tag, segments* (slices - 1) * 6, true)
 {
+	s_totalSpheres++;
 	m_color = glm::vec4(r, g, b, a);
 
 	GLuint offsetVertex = 0;
@@ -78,6 +85,7 @@ Sphere::Sphere(const std::string& tag, GLfloat radius, GLuint segments, GLuint s
 Sphere::~Sphere()
 {
 	m_buffer.Destroy(m_tag);
+	s_totalSpheres--;
 }
 //======================================================================================================
 void Sphere::SetRadius(GLfloat radius)
