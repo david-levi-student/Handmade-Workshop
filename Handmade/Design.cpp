@@ -139,18 +139,8 @@ bool Design::OnEnter()
 	//Adding objects to the scene
 	//========================================================================= 
 
-	m_grid = std::make_unique<Grid>("Scene (Empty)");
+	m_grid = std::make_unique<Grid>("Scene");
 	m_grid->GetTransform().SetRotation(45.0f, -30.0f, 0.0f);
-
-	//m_object = std::make_unique<Cuboid>(m_grid.get());
-	//m_objects.emplace_back(std::make_unique<Cuboid>("Cube_1"));
-	//m_grid->AddChild(m_objects.back().get());
-
-	//auto back = m_objects.back().get();
-	//m_objects.emplace_back(std::make_unique<Cuboid>("Cube_2"));
-	//back->AddChild(m_objects.back().get());
-
-	//m_activeObject = m_objects.back().get();
 
 	m_sceneCamera = std::make_unique<FreeCamera>("Main_cam");
 	m_sceneCamera->SetVelocity(0.0f);
@@ -604,6 +594,7 @@ void Design::RenderHierarchyWindow()
 	//label of the child and this runs until there are no more children
 	std::function<void(Object*)> OpenTree = [&](Object* child)
 	{
+		//The specific child tab is expanded so display all of its children
 		if (ImGui::TreeNode(child->GetTag().c_str()))
 		{
 			m_activeObject = child;
@@ -619,7 +610,7 @@ void Design::RenderHierarchyWindow()
 		return;
 	};
 
-	//Click on 'Scene' and open up all of the grid's children
+	//The 'Scene' tab is expanded so display all of the grid's children
 	if (ImGui::TreeNode(m_grid->GetTag().c_str()))
 	{
 		for (const auto& child : m_grid->GetChildren())
