@@ -22,6 +22,7 @@ const auto MINOR = 0.15f;
 const auto MAJOR = 0.85f;
 const auto FONT_SIZE = 18.0f;
 const auto UI_PADDING = 2.0f;
+const auto MENU_BAR_HEIGHT = 24;
 const auto MAX_CONSOLE_LOG_SIZE = 1000;
 
 class Design : public State
@@ -39,6 +40,7 @@ public:
 
 private:
 
+	void RenderMenu();
 	void RenderConsoleWindow();
 	void RenderHierarchyWindow();
 	void RenderPropertiesWindow();

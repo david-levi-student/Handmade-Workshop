@@ -288,7 +288,7 @@ bool Design::Render()
 	};
 
 	//Hierarchy viewport
-	SetViewport(glm::ivec4(0, m_minorHeight, m_minorWidth, m_resolution.y - m_minorHeight),
+	SetViewport(glm::ivec4(0, m_minorHeight, m_minorWidth, m_resolution.y - m_minorHeight - MENU_BAR_HEIGHT),
 		glm::uvec4(0U, 144U, 255U, 1U));
 
 	//Console viewport
@@ -411,6 +411,7 @@ bool Design::Render()
 	ImGui_ImplSDL2_NewFrame();
 	ImGui::NewFrame();
 
+	RenderMenu();
 	RenderConsoleWindow();
 	RenderHierarchyWindow();
 	RenderPropertiesWindow();
@@ -428,9 +429,60 @@ void Design::OnExit()
 	Text::Shutdown();
 }
 //======================================================================================================
+void Design::RenderMenu()
+{
+	if (ImGui::BeginMainMenuBar())
+	{
+		//Do not use else-if statements here otherwise
+		//the menu titles will not render correctly
+		if (ImGui::BeginMenu("Scene"))
+		{
+			ImGui::MenuItem("New", nullptr, nullptr);
+			ImGui::MenuItem("Load...", nullptr, nullptr);
+			ImGui::MenuItem("Save", nullptr, nullptr);
+			ImGui::MenuItem("Save As...", nullptr, nullptr);
+			ImGui::MenuItem("Reset", nullptr, nullptr);
+			ImGui::Separator();
+			ImGui::MenuItem("Exit", nullptr, nullptr);
+			ImGui::EndMenu();
+		}
+
+		if (ImGui::BeginMenu("Objects"))
+		{
+			ImGui::MenuItem("Quad", nullptr, nullptr);
+			ImGui::MenuItem("Circle", nullptr, nullptr);
+			ImGui::MenuItem("Cuboid", nullptr, nullptr);
+			ImGui::MenuItem("Sphere", nullptr, nullptr);
+			ImGui::Separator();
+			ImGui::MenuItem("Text", nullptr, nullptr);
+			ImGui::MenuItem("Tile", nullptr, nullptr);
+			ImGui::MenuItem("Light", nullptr, nullptr);
+			ImGui::EndMenu();
+		}
+
+		if (ImGui::BeginMenu("Custom"))
+		{
+			ImGui::MenuItem("Model...", nullptr, nullptr);
+			ImGui::MenuItem("Shader...", nullptr, nullptr);
+			ImGui::MenuItem("Audio...", nullptr, nullptr);
+			ImGui::EndMenu();
+		}
+
+		if (ImGui::BeginMenu("Help"))
+		{
+			ImGui::MenuItem("Tutorial", nullptr, nullptr);
+			ImGui::MenuItem("About...", nullptr, nullptr);
+			ImGui::EndMenu();
+		}
+
+		ImGui::EndMainMenuBar();
+	}
+}
+//======================================================================================================
 void Design::RenderConsoleWindow()
 {
 	ImGui::Begin("Output console", nullptr,
+		ImGuiWindowFlags_::ImGuiWindowFlags_NoTitleBar |
 		ImGuiWindowFlags_::ImGuiWindowFlags_NoResize |
 		ImGuiWindowFlags_::ImGuiWindowFlags_NoMove |
 		ImGuiWindowFlags_::ImGuiWindowFlags_NoCollapse);
@@ -459,13 +511,14 @@ void Design::RenderConsoleWindow()
 void Design::RenderHierarchyWindow()
 {
 	ImGui::Begin("Hierarchy", nullptr,
+		ImGuiWindowFlags_::ImGuiWindowFlags_NoTitleBar |
 		ImGuiWindowFlags_::ImGuiWindowFlags_NoResize |
 		ImGuiWindowFlags_::ImGuiWindowFlags_NoMove |
 		ImGuiWindowFlags_::ImGuiWindowFlags_NoCollapse);
 
-	auto windowPos = ImVec2(static_cast<float>(UI_PADDING), UI_PADDING);
+	auto windowPos = ImVec2(static_cast<float>(UI_PADDING), UI_PADDING + MENU_BAR_HEIGHT);
 	auto windowSize = ImVec2(static_cast<float>(m_minorWidth - UI_PADDING * 2.0f),
-		static_cast<float>(m_resolution.y - m_minorHeight - UI_PADDING));
+		static_cast<float>(m_resolution.y - m_minorHeight - UI_PADDING - MENU_BAR_HEIGHT));
 
 	ImGui::SetWindowPos("Hierarchy", windowPos);
 	ImGui::SetWindowSize("Hierarchy", windowSize);
@@ -510,13 +563,14 @@ void Design::RenderHierarchyWindow()
 void Design::RenderPropertiesWindow()
 {
 	ImGui::Begin("Properties", nullptr,
+		ImGuiWindowFlags_::ImGuiWindowFlags_NoTitleBar |
 		ImGuiWindowFlags_::ImGuiWindowFlags_NoResize |
 		ImGuiWindowFlags_::ImGuiWindowFlags_NoMove |
 		ImGuiWindowFlags_::ImGuiWindowFlags_NoCollapse);
 
-	auto windowPos = ImVec2(static_cast<float>(m_majorWidth + UI_PADDING), UI_PADDING);
+	auto windowPos = ImVec2(static_cast<float>(m_majorWidth + UI_PADDING), UI_PADDING + MENU_BAR_HEIGHT);
 	auto windowSize = ImVec2(static_cast<float>(m_minorWidth - UI_PADDING * 2.0f),
-		static_cast<float>(m_resolution.y - UI_PADDING * 2.0f));
+		static_cast<float>(m_resolution.y - UI_PADDING * 2.0f - MENU_BAR_HEIGHT));
 
 	ImGui::SetWindowPos("Properties", windowPos);
 	ImGui::SetWindowSize("Properties", windowSize);
