@@ -53,7 +53,7 @@ Quad::Quad(const std::string& tag, GLfloat width, GLfloat height, GLfloat r, GLf
 //======================================================================================================
 Quad::~Quad()
 {
-	m_buffer.Destroy("Quad");
+	m_buffer.Destroy(m_tag);
 	s_totalQuads--;
 }
 //======================================================================================================
