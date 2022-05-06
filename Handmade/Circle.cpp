@@ -1,10 +1,17 @@
 #include "Circle.h"
 
+int Circle::s_totalCircles = 0;
+//======================================================================================================
+int Circle::GetTotalCircles()
+{
+	return s_totalCircles;
+}
 //======================================================================================================
 Circle::Circle(const std::string& tag,
 	GLfloat radius, GLuint slices, GLfloat r, GLfloat g, GLfloat b, GLfloat a)
 	: Object(tag), m_slices(slices), m_radius(radius), m_buffer(tag, slices + 1)
 {
+	s_totalCircles++;
 	m_color = glm::vec4(r, g, b, a);
 
 	auto offsetVertex = 0U;
@@ -63,6 +70,7 @@ Circle::Circle(const std::string& tag,
 Circle::~Circle()
 {
 	m_buffer.Destroy(m_tag);
+	s_totalCircles--;
 }
 //======================================================================================================
 void Circle::SetRadius(GLfloat radius)
