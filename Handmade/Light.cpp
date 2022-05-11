@@ -1,10 +1,15 @@
 #include "Light.h"
 
 GLuint Light::s_totalLights = 0;
-
+//======================================================================================================
+int Light::GetTotalLights()
+{
+	return s_totalLights;
+}
 //======================================================================================================
 Light::Light(const std::string& tag, GLfloat x, GLfloat y, GLfloat z) : Object(tag), m_buffer(tag, 1)
 {
+	s_totalLights++;
 	m_transform.SetPosition(x, y, z);
 
 	//TODO - Find a way to only create one single 

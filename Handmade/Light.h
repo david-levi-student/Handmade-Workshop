@@ -12,6 +12,8 @@ class Light : public Object
 
 public:
 
+	static int GetTotalLights();
+
 	Light(const std::string& tag, GLfloat x = 0, GLfloat y = 0, GLfloat z = 0);
 	virtual ~Light();
 
