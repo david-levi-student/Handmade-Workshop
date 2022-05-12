@@ -116,8 +116,10 @@ bool Design::OnEnter()
 
 	//===================================================================
 
-	m_consoleLog.push_front("Text sub-system initialized.");
-	m_consoleLog.push_front("Audio sub-system initialized.");
+	//TODO - Move these to a global messaging system so 
+	//that the 'App' class can register these messages
+	//m_consoleLog.push_front("Text sub-system initialized.");
+	//m_consoleLog.push_front("Audio sub-system initialized.");
 
 	//=========================================================================
 
