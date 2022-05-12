@@ -1,8 +1,10 @@
 #include <assert.h>
 #include "App.h"
+#include "Audio.h"
 #include "Input.h"
 #include "Screen.h"
 #include "Shader.h"
+#include "Text.h"
 
 //======================================================================================================
 App::App(State* initialState)
@@ -66,6 +68,16 @@ bool App::Initialize()
 	}
 
 	if (!Shader::Initialize())
+	{
+		return false;
+	}
+
+	if (!Text::Initialize())
+	{
+		return false;
+	}
+
+	if (!Audio::Initialize())
 	{
 		return false;
 	}

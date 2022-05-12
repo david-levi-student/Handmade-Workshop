@@ -116,18 +116,7 @@ bool Design::OnEnter()
 
 	//===================================================================
 
-	if (!(Text::Initialize()))
-	{
-		return false;
-	}
-
 	m_consoleLog.push_front("Text sub-system initialized.");
-
-	if (!(Audio::Initialize()))
-	{
-		return false;
-	}
-
 	m_consoleLog.push_front("Audio sub-system initialized.");
 
 	//=========================================================================
