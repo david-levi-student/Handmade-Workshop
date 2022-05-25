@@ -30,7 +30,7 @@ class Design : public State
 
 public:
 
-	Design();
+	Design() {}
 	virtual ~Design() {}
 
 	virtual bool OnEnter();

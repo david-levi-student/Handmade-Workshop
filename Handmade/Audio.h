@@ -54,8 +54,7 @@ public:
 
 	static void SetRootFolder(const std::string& rootFolder);
 
-	Audio(Type type = Type::Music, const std::string& tag = "",
-		const std::string& filename = "");
+	Audio(Type type = Type::Music, const std::string& tag = "", const std::string& filename = "");
 	Audio(const Audio& copy);
 	~Audio() {}
 

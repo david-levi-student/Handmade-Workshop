@@ -10,12 +10,9 @@
 #include "Screen.h"
 #include "Utility.h"
 
-//======================================================================================================
-Design::Design() {}
-//======================================================================================================
+
 bool Design::OnEnter()
 {
-	//TODO - Use a color picker to change this
 	Screen::Instance()->SetColor(30U, 30U, 30U);
 
 	m_mainShader = std::make_unique<Shader>();
@@ -116,8 +113,7 @@ bool Design::OnEnter()
 
 	//===================================================================
 
-	//TODO - Move these to a global messaging system so 
-	//that the 'App' class can register these messages
+	//TODO - Move these to a global messaging system so that the 'App' class can register these messages
 	//m_consoleLog.push_front("Text sub-system initialized.");
 	//m_consoleLog.push_front("Audio sub-system initialized.");
 

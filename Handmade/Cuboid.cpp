@@ -113,8 +113,7 @@ Cuboid::Cuboid(const std::string& tag, GLfloat width, GLfloat height, GLfloat de
 						16, 17, 19, 19, 17, 18,      //Top face
 						20, 21, 23, 23, 21, 22 };    //Bottom face
 
-	//TODO - Find a way to only create one single 
-	//buffer to be shared amongst subsequent cuboids
+	//TODO - Find a way to only create one single buffer to be shared amongst subsequent cuboids
 
 	m_buffer.LinkEBO();
 	m_buffer.FillVBO(Buffer::VBO::VertexBuffer, vertices, sizeof(vertices), Buffer::Fill::Ongoing);

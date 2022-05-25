@@ -12,8 +12,7 @@ Light::Light(const std::string& tag, GLfloat x, GLfloat y, GLfloat z) : Object(t
 	s_totalLights++;
 	m_transform.SetPosition(x, y, z);
 
-	//TODO - Find a way to only create one single 
-	//buffer to be shared amongst subsequent lights
+	//TODO - Find a way to only create one single buffer to be shared amongst subsequent lights
 
 	GLfloat vertex[] = { 0.0f, 0.0f, 0.0f };
 	GLfloat color[] = { m_ambient.r, m_ambient.g, m_ambient.b, 1.0f };

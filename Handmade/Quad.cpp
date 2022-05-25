@@ -40,8 +40,7 @@ Quad::Quad(const std::string& tag, GLfloat width, GLfloat height, GLfloat r, GLf
 	GLuint indices[] = { 0, 1, 3,
 						 3, 1, 2 };
 
-	//TODO - Find a way to only create one single 
-	//buffer to be shared amongst subsequent quads
+	//TODO - Find a way to only create one single buffer to be shared amongst subsequent quads
 
 	m_buffer.LinkEBO();
 	m_buffer.FillVBO(Buffer::VBO::VertexBuffer, vertices, sizeof(vertices), Buffer::Fill::Ongoing);

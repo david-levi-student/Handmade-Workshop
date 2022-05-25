@@ -12,53 +12,53 @@ void Utility::CheckGLError()
 	switch (errorCode)
 	{
 
-	case GL_NO_ERROR:
-	{
-		Log(Destination::LogFile, "There are no errors.", Severity::Default);
-		break;
-	}
-
-	case GL_INVALID_ENUM:
-	{
-		Log(Destination::LogFile, "Invalid enumeration type passed.", Severity::Failure);
-		break;
-	}
-
-	case GL_INVALID_VALUE:
-	{
-		Log(Destination::LogFile, "Numeric value outside of accepted range.", Severity::Failure);
-		break;
-	}
-
-	case GL_INVALID_OPERATION:
-	{
-		Log(Destination::LogFile, "Invalid operation.", Severity::Failure);
-		break;
-	}
-
-	case GL_INVALID_FRAMEBUFFER_OPERATION:
-	{
-		Log(Destination::LogFile, "Framebuffer object incomplete.", Severity::Failure);
-		break;
-	}
-
-	case GL_STACK_OVERFLOW:
-	{
-		Log(Destination::LogFile, "Stack overflow.", Severity::Failure);
-		break;
-	}
-
-	case GL_STACK_UNDERFLOW:
-	{
-		Log(Destination::LogFile, "Stack underflow.", Severity::Failure);
-		break;
-	}
-
-	case GL_OUT_OF_MEMORY:
-	{
-		Log(Destination::LogFile, "Out of memory.", Severity::Failure);
-		break;
-	}
+		case GL_NO_ERROR:
+		{
+			Log(Destination::LogFile, "There are no errors.", Severity::Default);
+			break;
+		}
+	
+		case GL_INVALID_ENUM:
+		{
+			Log(Destination::LogFile, "Invalid enumeration type passed.", Severity::Failure);
+			break;
+		}
+	
+		case GL_INVALID_VALUE:
+		{
+			Log(Destination::LogFile, "Numeric value outside of accepted range.", Severity::Failure);
+			break;
+		}
+	
+		case GL_INVALID_OPERATION:
+		{
+			Log(Destination::LogFile, "Invalid operation.", Severity::Failure);
+			break;
+		}
+	
+		case GL_INVALID_FRAMEBUFFER_OPERATION:
+		{
+			Log(Destination::LogFile, "Framebuffer object incomplete.", Severity::Failure);
+			break;
+		}
+	
+		case GL_STACK_OVERFLOW:
+		{
+			Log(Destination::LogFile, "Stack overflow.", Severity::Failure);
+			break;
+		}
+	
+		case GL_STACK_UNDERFLOW:
+		{
+			Log(Destination::LogFile, "Stack underflow.", Severity::Failure);
+			break;
+		}
+	
+		case GL_OUT_OF_MEMORY:
+		{
+			Log(Destination::LogFile, "Out of memory.", Severity::Failure);
+			break;
+		}
 
 	}
 }

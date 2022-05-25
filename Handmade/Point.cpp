@@ -1,6 +1,5 @@
 #include "Point.h"
 
-//======================================================================================================
 Point::Point(const std::string& tag, GLfloat pointSize, GLfloat r, GLfloat g, GLfloat b, GLfloat a)
 	: Object(tag), m_buffer(tag, 1), m_pointSize(pointSize)
 {

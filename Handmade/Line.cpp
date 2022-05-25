@@ -1,6 +1,5 @@
 #include "Line.h"
 
-//======================================================================================================
 Line::Line(const std::string& tag, GLfloat lineWidth, GLfloat r, GLfloat g, GLfloat b, GLfloat a)
 	: Object(tag), m_buffer(tag, 2), m_lineWidth(lineWidth)
 {

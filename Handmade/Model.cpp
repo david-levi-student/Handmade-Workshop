@@ -185,8 +185,7 @@ bool Model::Load(const std::string& tag,
 				lastName = subStrings[1];
 				faces.clear();
 
-				//TODO - Find a way to clear data that's 
-				//no longer required from the raw mesh 
+				//TODO - Find a way to clear data that's no longer required from the raw mesh 
 				//Not sure why this does not work?
 				//rawMesh.vertices.clear();
 				//rawMesh.textureCoords.clear();
